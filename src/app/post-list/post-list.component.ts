@@ -18,11 +18,11 @@ export class PostListComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log("init post list");
     this.postManagement.getPostListAsObservable().subscribe(
       post => this.posts = post as Array<Post>
     );
-
-
+    console.log(this.posts);
   }
 
 }
