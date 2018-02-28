@@ -14,6 +14,8 @@ import {AppRoutingModule} from "./app-routing/app-routing.module";
 import {UserManagementService} from "./services/user-management.service";
 import {PostManagementService} from "./services/post-management.service";
 import {BidManagementService} from "./services/bid-management.service";
+import { CoreModule } from './core/core.module';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 export const firebaseConfig = {
@@ -32,13 +34,15 @@ export const firebaseConfig = {
     PostDetailsComponent,
     LoginComponent,
     UserDetailsComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule.enablePersistence(),
-    AppRoutingModule
+    AppRoutingModule,
+    CoreModule
   ],
   providers: [
     UserManagementService,
