@@ -2,28 +2,10 @@ import {Component, OnInit} from '@angular/core';
 
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
+// import {User} from "./model/User";
+import {Post} from "./model/Post";
+import {User} from "./model/User";
 
-export interface User {
-  id?: number;
-  name: string;
-}
-export interface Post {
-  id?: number;
-  user_id: number;
-  title: string;
-  description: string;
-}
-class PostImpl implements Post {
-  id?: number;
-  user_id: number;
-  title: string;
-  description: string;
-}
-export interface Note {
-  content: string;
-  hearts: number;
-  id?: any;
-}
 
 @Component({
   selector: 'app-root',
@@ -32,8 +14,6 @@ export interface Note {
 })
 
 export class AppComponent implements OnInit {
-  notesCollection: AngularFirestoreCollection<Note>;
-  notes: Observable<Note[]>;
   usersCollection: AngularFirestoreCollection<User>;
   users: Observable<User[]>;
   postsCollection: AngularFirestoreCollection<Post>;
@@ -44,9 +24,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.notesCollection = this.afs.collection('Notes');
-    this.notes = this.notesCollection.valueChanges();
-
     this.usersCollection = this.afs.collection('User');
     this.users = this.usersCollection.snapshotChanges().map(actions => {
       return actions.map(action => {
