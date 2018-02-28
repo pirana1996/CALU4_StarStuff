@@ -16,24 +16,23 @@ export class PostManagementService implements OnInit {
   ngOnInit(): void {
     this.usersCollectionRef = this.afs.collection('User');
     this.postsCollectionRef = this.afs.collection('Post');
-
-
-  }
-
-  constructor(private afs: AngularFirestore) { }
-
-  public getPostListAsObservable(): Observable<Post[]> {
-    return this.postsCollectionRef.snapshotChanges().map(actions => {
+    this.posts = this.postsCollectionRef.snapshotChanges().map(actions => {
       return actions.map(action => {
         const id = +action.payload.doc.id;
         const data = action.payload.doc.data() as Post;
         return {id, ...data};
       });
     });
-
   }
 
-  public getPostById(id: string): Observable<Post> {
+  constructor(private afs: AngularFirestore) {
+  }
+
+  public getPostListAsObservable(): Observable<Post[]> {
+    return this.posts;
+  }
+
+  getPostById(id: string): Observable<Post> {
     return this.afs.doc('Post/' + id).valueChanges();
   }
 
