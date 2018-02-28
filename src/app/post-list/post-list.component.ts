@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { Observable } from 'rxjs/Observable';
+// import {User} from "./model/User";
+import {Post} from "../model/Post";
+import {PostManagementService} from "../services/post-management.service";
 
 @Component({
   selector: 'app-post-list',
@@ -7,10 +12,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostListComponent implements OnInit {
 
-  constructor() { }
+  posts: Post[];
+
+  constructor(private postManagement: PostManagementService) {
+  }
 
   ngOnInit() {
-    console.log("AAAAAAAAAAAAAAAAAAa");
+    this.postManagement.getPostListAsObservable().subscribe(
+      post => this.posts = post as Array<Post>
+    );
+
+
   }
 
 }

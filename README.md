@@ -2,6 +2,15 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.4.
 
+##Before building. Important!
+To avoid metadata version mismach error run the following command in Terminal:
+`npm install angularfire2@5.0.0-rc.3 --save`
+
+"NullLogger" exception may occur when generating components, the solution is to run `npm install --save @angular/cli@latest`
+
+##Installing Bootsrap 
+Run `npm install ngx-bootstrap --save`
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

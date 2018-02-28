@@ -16,6 +16,7 @@ export class PostManagementService implements OnInit {
   ngOnInit(): void {
     this.usersCollectionRef = this.afs.collection('User');
     this.postsCollectionRef = this.afs.collection('Post');
+    console.log("Test1");
     this.posts = this.postsCollectionRef.snapshotChanges().map(actions => {
       return actions.map(action => {
         const id = +action.payload.doc.id;
@@ -23,6 +24,7 @@ export class PostManagementService implements OnInit {
         return {id, ...data};
       });
     });
+    console.log("TEST2");
   }
 
   constructor(private afs: AngularFirestore) {
