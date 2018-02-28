@@ -4,9 +4,11 @@ import {RouterModule, Routes} from "@angular/router";
 import {PostListComponent} from "../post-list/post-list.component";
 import {PostDetailsComponent} from "../post-details/post-details.component";
 import {PageNotFoundComponent} from "../page-not-found/page-not-found.component";
+import {BiddingComponent} from "../bidding/bidding.component";
 
 const appRoutes: Routes = [
   { path: 'posts/list', component: PostListComponent },
+  { path: 'posts/bidding', component: BiddingComponent },
   { path: 'post/details/:id', component:  PostDetailsComponent },
   { path: '',   redirectTo: 'posts/list', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }

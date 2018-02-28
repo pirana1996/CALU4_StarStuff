@@ -14,6 +14,7 @@ import {AppRoutingModule} from "./app-routing/app-routing.module";
 import {UserManagementService} from "./services/user-management.service";
 import {PostManagementService} from "./services/post-management.service";
 import {BidManagementService} from "./services/bid-management.service";
+import { BiddingComponent } from './bidding/bidding.component';
 
 
 export const firebaseConfig = {
@@ -32,7 +33,8 @@ export const firebaseConfig = {
     PostDetailsComponent,
     LoginComponent,
     UserDetailsComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    BiddingComponent
   ],
   imports: [
     BrowserModule,
