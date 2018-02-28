@@ -37,11 +37,8 @@ export const firebaseConfig = {
     LoginComponent,
     UserDetailsComponent,
     PageNotFoundComponent,
-<<<<<<< HEAD
-    BiddingComponent
-=======
+    BiddingComponent,
     UserProfileComponent
->>>>>>> 490ca3a34d0d9c62ad0c83dcb07e038a1254c837
   ],
   imports: [
     BrowserModule,

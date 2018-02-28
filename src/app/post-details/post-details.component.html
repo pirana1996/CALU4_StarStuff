@@ -1,3 +1,11 @@
-<p>
-  post-details works!
-</p>
+<div>
+  <h2>{{post.title}}</h2>
+  <p>{{post.description}}</p>
+
+  <app-bidding></app-bidding>
+</div>
+
+<ul *ngFor="let bid of bids">
+  <li>{{bid | json}}</li>
+</ul>
+
