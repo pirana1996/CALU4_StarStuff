@@ -5,6 +5,10 @@ import { AppComponent } from './app.component';
 
 import {AngularFireModule} from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { PostListComponent } from './post-list/post-list.component';
+import { PostDetailsComponent } from './post-details/post-details.component';
+import { LoginComponent } from './login/login.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
 
 export const firebaseConfig = {
@@ -18,7 +22,11 @@ export const firebaseConfig = {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PostListComponent,
+    PostDetailsComponent,
+    LoginComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,
