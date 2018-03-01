@@ -8,6 +8,7 @@ import {PageNotFoundComponent} from "../page-not-found/page-not-found.component"
 import {BiddingComponent} from "../bidding/bidding.component";
 
 import {UserProfileComponent} from "../user-profile/user-profile.component";
+import {TimerComponent} from "../timer/timer.component";
 
 
 const appRoutes: Routes = [
@@ -15,6 +16,7 @@ const appRoutes: Routes = [
   { path: 'posts/bidding', component: BiddingComponent },
   { path: 'post/details/:id', component:  PostDetailsComponent },
   { path: 'user', component:  UserProfileComponent },
+  { path: 'timer', component:  TimerComponent },
   { path: '',   redirectTo: 'posts/list', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];

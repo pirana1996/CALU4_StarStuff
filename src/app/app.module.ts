@@ -18,6 +18,7 @@ import {BidManagementService} from './services/bid-management.service';
 import { BiddingComponent } from './bidding/bidding.component';
 import { CoreModule } from './core/core.module';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { TimerComponent } from './timer/timer.component';
 
 
 export const firebaseConfig = {
@@ -38,7 +39,8 @@ export const firebaseConfig = {
     UserDetailsComponent,
     PageNotFoundComponent,
     BiddingComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    TimerComponent
   ],
   imports: [
     BrowserModule,
