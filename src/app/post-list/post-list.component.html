@@ -1,5 +1,8 @@
-<ul>
-  <li *ngFor="let post of posts | async">
-    {{ post | json }}
+<ul class="list-unstyled">
+  <li *ngFor="let post of posts" class="list-group-item list-group-item-action"
+      [routerLink]="['/post/details', post.id]">
+    <h2>{{ post.title }}</h2>
+    <p>{{post.description}}</p>
   </li>
 </ul>
+

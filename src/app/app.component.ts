@@ -19,7 +19,8 @@ export class AppComponent implements OnInit {
   postsCollection: AngularFirestoreCollection<Post>;
   posts: Observable<Post[]>;
   filteredResult: Observable<Post[]>;
-  postArray: object[];
+  postArray: {}[];
+
   constructor(private afs: AngularFirestore) {
   }
 
@@ -56,8 +57,12 @@ export class AppComponent implements OnInit {
 
     const queryOnCollection = this.afs.collection('Post', ref => ref.where('user', '==', String(id)));
     //this.filteredResult = queryOnCollection.valueChanges().subscribe(postsTmp => this.posts = postsTmp);
-    queryOnCollection.valueChanges().subscribe(postsTmp => this.postArray = postsTmp as Array<Post>);
-    console.log(this.postArray);
+    queryOnCollection.valueChanges().subscribe(postsTmp => {
+    this.postArray = postsTmp as Array<{}>;
+      console.log(this.postArray);
+    });
+    // this.postArray = postsTmp as Array<Post>
+
 
     //const result = queryOnCollection.valueChanges();
 

@@ -10,10 +10,12 @@ import { PostDetailsComponent } from './post-details/post-details.component';
 import { LoginComponent } from './login/login.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import {AppRoutingModule} from "./app-routing/app-routing.module";
-import {UserManagementService} from "./services/user-management.service";
-import {PostManagementService} from "./services/post-management.service";
-import {BidManagementService} from "./services/bid-management.service";
+import {AppRoutingModule} from './app-routing/app-routing.module';
+import {UserManagementService} from './services/user-management.service';
+import {PostManagementService} from './services/post-management.service';
+import {BidManagementService} from './services/bid-management.service';
+
+import { BiddingComponent } from './bidding/bidding.component';
 import { CoreModule } from './core/core.module';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 
@@ -35,6 +37,7 @@ export const firebaseConfig = {
     LoginComponent,
     UserDetailsComponent,
     PageNotFoundComponent,
+    BiddingComponent,
     UserProfileComponent
   ],
   imports: [

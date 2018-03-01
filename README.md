@@ -9,7 +9,7 @@ To avoid metadata version mismach error run the following command in Terminal:
 "NullLogger" exception may occur when generating components, the solution is to run `npm install --save @angular/cli@latest`
 
 ##Installing Bootsrap 
-Run `npm install ngx-bootstrap --save`
+Run `npm install --save bootstrap`
 
 ## Development server
 
