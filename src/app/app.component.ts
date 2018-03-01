@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 // import {User} from "./model/User";
 import {Post} from "./model/Post";
 import {User} from "./model/User";
-import {AuthService} from "./core/auth.service";
+import {AuthService} from "./auth/auth.service";
 
 
 @Component({

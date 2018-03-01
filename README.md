@@ -2,14 +2,17 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.4.
 
-##Before building. Important!
+#Before building. Important!
 To avoid metadata version mismach error run the following command in Terminal:
 `npm install angularfire2@5.0.0-rc.3 --save`
 
 "NullLogger" exception may occur when generating components, the solution is to run `npm install --save @angular/cli@latest`
 
-##Installing Bootsrap 
+#Installing Bootsrap 
 Run `npm install bootstrap@3 jquery --save`
+
+#Installing Font Awesome
+Run `npm install font-awesome --save`
 
 ## Development server
 

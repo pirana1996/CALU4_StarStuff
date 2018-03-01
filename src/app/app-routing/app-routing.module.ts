@@ -8,13 +8,15 @@ import {PageNotFoundComponent} from "../page-not-found/page-not-found.component"
 import {BiddingComponent} from "../bidding/bidding.component";
 
 import {UserProfileComponent} from "../user-profile/user-profile.component";
+import {LoginComponent} from "../login/login.component";
 
 
 const appRoutes: Routes = [
   { path: 'posts/list', component: PostListComponent },
-  { path: 'posts/bidding', component: BiddingComponent },
+  // { path: 'posts/bidding', component: BiddingComponent },
   { path: 'post/details/:id', component:  PostDetailsComponent },
-  { path: 'user', component:  UserProfileComponent },
+  { path: 'login', component:  LoginComponent },
+  { path: 'profile', component:  UserProfileComponent },
   { path: '',   redirectTo: 'posts/list', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
