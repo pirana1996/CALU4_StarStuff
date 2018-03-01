@@ -14,7 +14,7 @@ const appRoutes: Routes = [
   { path: 'posts/list', component: PostListComponent },
   { path: 'posts/bidding', component: BiddingComponent },
   { path: 'post/details/:id', component:  PostDetailsComponent },
-  { path: 'user/:id', component:  UserProfileComponent },
+  { path: 'user', component:  UserProfileComponent },
   { path: '',   redirectTo: 'posts/list', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
