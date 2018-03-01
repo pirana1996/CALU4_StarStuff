@@ -20,7 +20,10 @@ export class BiddingComponent implements OnInit {
   constructor(private service: BidManagementService, private userService: UserManagementService) { }
 
   ngOnInit() {
-      this.service.getBidListAsObservable().subscribe(bid => this.bids = bid.sort((a, b) => b.price - a.price));
+      // this.service.getBidListAsObservable().subscribe(bid => this.bids = bid.sort((a, b) => b.price - a.price));
+    // console.log(this.parentPost.id);
+    this.service.getBidsByPostIdAsObservable(String(this.parentPost.id))
+      .subscribe(bid => this.bids = bid.sort((a, b) => b.price - a.price));
   }
 
   bidEntry(newBidEntry: number) {
