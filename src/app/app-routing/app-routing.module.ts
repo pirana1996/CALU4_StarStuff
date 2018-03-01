@@ -13,7 +13,7 @@ import {LoginComponent} from "../login/login.component";
 
 const appRoutes: Routes = [
   { path: 'posts/list', component: PostListComponent },
-  { path: 'posts/bidding', component: BiddingComponent },
+  // { path: 'posts/bidding', component: BiddingComponent },
   { path: 'post/details/:id', component:  PostDetailsComponent },
   { path: '/login', component:  LoginComponent },
   { path: '/profile', component:  UserProfileComponent },
