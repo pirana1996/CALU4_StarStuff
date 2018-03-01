@@ -10,7 +10,7 @@
   </div>
 
   <div class="col-md-4">
-    <app-bidding [parentPost]="post"></app-bidding>
+    <app-bidding *ngIf='post' [parentPost]="post"></app-bidding>
   </div>
 
 </div>
