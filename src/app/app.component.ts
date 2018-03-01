@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 // import {User} from "./model/User";
 import {Post} from "./model/Post";
 import {User} from "./model/User";
+import {AuthService} from "./core/auth.service";
 
 
 @Component({
@@ -21,7 +22,9 @@ export class AppComponent implements OnInit {
   filteredResult: Observable<Post[]>;
   postArray: {}[];
 
-  constructor(private afs: AngularFirestore) {
+  user: User;
+
+  constructor(private afs: AngularFirestore, private authService: AuthService) {
   }
 
   ngOnInit() {
@@ -35,6 +38,7 @@ export class AppComponent implements OnInit {
     });
 
     this.postsCollection = this.afs.collection('Post');
+    this.authService.user.subscribe(user => this.user = user);
 
   }
 
