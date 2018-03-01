@@ -6,14 +6,12 @@
       <tr>
         <th>E-mail</th>
         <th>Bid</th>
-        <th>Time</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor = "let bid of bids">
         <td>{{ bid.email }}</td>
         <td>{{ bid.price }}$</td>
-        <td>{{ bid.time }}</td>
       </tr>
     </tbody>
   </table>
