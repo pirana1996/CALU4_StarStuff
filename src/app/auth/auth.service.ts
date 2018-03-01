@@ -60,16 +60,16 @@ export class AuthService {
       email: user.email,
       displayName: user.displayName,
       photoURL: user.photoURL
-    }
+    };
 
-    return userRef.set(data)
+    return userRef.set(data).then(() => this.router.navigate(['/posts/list']));
 
   }
 
 
   signOut() {
     this.afAuth.auth.signOut().then(() => {
-      this.router.navigate(['/user']);
+      this.router.navigate(['/login']);
     });
   }
 

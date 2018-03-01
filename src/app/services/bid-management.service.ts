@@ -7,21 +7,25 @@ import {Bid} from "../model/Bid";
 @Injectable()
 export class BidManagementService {
 
-  usersCollection: AngularFirestoreCollection<Bid>;
-  users: Observable<Bid[]>;
+  bidsCollection: AngularFirestoreCollection<Bid>;
+  bids: Observable<Bid[]>;
 
   constructor(private afs: AngularFirestore) {
-    this.usersCollection = this.afs.collection('Bid');
+    this.bidsCollection = this.afs.collection('Bid');
   }
 
   public getBidListAsObservable(): Observable<Bid[]> {
-    return this.usersCollection.snapshotChanges().map(actions => {
+    return this.bidsCollection.snapshotChanges().map(actions => {
       return actions.map(action => {
         const id = +action.payload.doc.id;
         const data = action.payload.doc.data() as Bid;
         return {id, ...data};
       });
     });
+  }
+
+  public addBidEntry(bid: Bid): void {
+    // this.bidsCollection.add(bid);
   }
 
 }

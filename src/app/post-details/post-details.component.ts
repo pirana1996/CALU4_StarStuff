@@ -23,13 +23,15 @@ export class PostDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    let id;
     this.route.paramMap
       .switchMap((params: ParamMap) => {
-        const id = params.get('id');
+        id = params.get('id');
         return this.service.getPostByIdAsObservable(id);
       })
       .subscribe(post => {
         this.post = post;
+        this.post.id = id;
       });
   }
 

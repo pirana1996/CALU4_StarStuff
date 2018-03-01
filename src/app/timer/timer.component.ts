@@ -6,10 +6,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./timer.component.css']
 })
 export class TimerComponent implements OnInit {
+  remainingSeconds : number;
 
-  constructor() { }
+  constructor() {
+  }
+
+  private startTimer(seconds: number){
+    setInterval(function () {
+      this.remainingSeconds = seconds--;
+    },1000);
+  }
 
   ngOnInit() {
-  }
+
+    }
+
+
+
 
 }

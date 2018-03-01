@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 // import {User} from "./model/User";
 import {Post} from "./model/Post";
 import {User} from "./model/User";
-import {AuthService} from "./core/auth.service";
+import {AuthService} from "./auth/auth.service";
 
 
 @Component({
@@ -65,21 +65,6 @@ export class AppComponent implements OnInit {
     this.postArray = postsTmp as Array<{}>;
       console.log(this.postArray);
     });
-    // this.postArray = postsTmp as Array<Post>
-
-
-    //const result = queryOnCollection.valueChanges();
-
-    /*result.snapshotChanges().map(actions => {
-      return actions.map(action => {
-        const id = +action.payload.doc.id;
-        const data = action.payload.doc.data() as Post;
-        return {id, ...data};
-      });
-    });*/
-    // const query = this.afs.collection('User').
-    //const query = this.usersCollection.
-    //where("reference", "==", reference);
 
   }
 }
