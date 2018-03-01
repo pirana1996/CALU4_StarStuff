@@ -65,21 +65,6 @@ export class AppComponent implements OnInit {
     this.postArray = postsTmp as Array<{}>;
       console.log(this.postArray);
     });
-    // this.postArray = postsTmp as Array<Post>
-
-
-    //const result = queryOnCollection.valueChanges();
-
-    /*result.snapshotChanges().map(actions => {
-      return actions.map(action => {
-        const id = +action.payload.doc.id;
-        const data = action.payload.doc.data() as Post;
-        return {id, ...data};
-      });
-    });*/
-    // const query = this.afs.collection('User').
-    //const query = this.usersCollection.
-    //where("reference", "==", reference);
 
   }
 }
