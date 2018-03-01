@@ -11,12 +11,12 @@ import {Bid} from "../model/Bid";
   styleUrls: ['./bidding.component.css']
 })
 export class BiddingComponent implements OnInit {
-  bids: Observable<Bid[]>;
+  bids: Bid[];
 
   constructor(private service: BidManagementService) { }
 
   ngOnInit() {
-      this.bids = this.service.getBidListAsObservable();
+      this.service.getBidListAsObservable().subscribe(bid => this.bids = bid);
   }
 
 }

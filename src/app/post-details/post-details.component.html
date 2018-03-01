@@ -1,5 +1,5 @@
-<div>
-  <h2>{{post.title}}</h2>
+<div *ngIf="post">
+  <h2>{{post.title | json}}</h2>
   <p>{{post.description}}</p>
   <!--<img *ngFor="let img of post.images" src={{img.url}}>-->
   <img src={{post.imageUrl}}>
