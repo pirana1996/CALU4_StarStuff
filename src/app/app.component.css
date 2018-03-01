@@ -2,6 +2,10 @@
   .navbar-toggleable-sm {
     clear: both;
   }
+
+  .pull-right {
+    float: left !important;
+  }
 }
 
 #user-photo {
