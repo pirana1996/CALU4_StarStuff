@@ -4,14 +4,14 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>Bidder index</th>
+        <th>E-mail</th>
         <th>Bid</th>
         <th>Time</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor = "let bid of bids">
-        <td>{{ bid.user }}</td>
+        <td>{{ bid.email }}</td>
         <td>{{ bid.price }}$</td>
         <td></td>
       </tr>

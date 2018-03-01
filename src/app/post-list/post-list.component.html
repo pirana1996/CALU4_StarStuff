@@ -1,8 +1,15 @@
 <ul class="list-unstyled">
   <li *ngFor="let post of posts" class="list-group-item list-group-item-action"
       [routerLink]="['/post/details', post.id]">
-    <h2>{{ post.title }}</h2>
-    <p>{{post.description}}</p>
+    <div class="row">
+      <div class="col-md-2">
+        <img src={{post.imageUrl}} width="100px" height="100">
+      </div>
+      <div class="col-md-10">
+        <h2>{{ post.title }}</h2>
+        <small>xxx bids</small>
+      </div>
+    </div>
   </li>
 </ul>
 
