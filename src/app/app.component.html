@@ -1,25 +1,74 @@
-<!--TODO tabs-->
-<!--<ul class="list-inline">-->
-  <!--<li class="list-inline-item">Trending</li>-->
-  <!--<li class="list-inline-item">Future</li>-->
-  <!--<li class="list-inline-item"></li>-->
-<!--</ul>-->
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand page-scroll" href="#page-top">Brand Name</a>
+    </div>
 
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav">
+        <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+        <li class="hidden">
+          <a class="page-scroll" href="#page-top"></a>
+        </li>
+        <li>
+          <a class="page-scroll" href="#about">Trending</a>
+        </li>
+        <li>
+          <a class="page-scroll" href="#services">Upcoming</a>
+        </li>
+        <li>
+          <a class="page-scroll" href="#contact">Contact</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="pull-right">
+          <a class="page-scroll" routerLink="/user">
+            <span *ngIf="user" class="page-scroll">
+              <img src="{{user.photoURL}}" class="img-circle img-responsive" id="user-photo">
 
-<div class="container">
-  <div class="row">
-    <span *ngIf="user">Singed in as {{user.displayName}}</span>
+              {{user.displayName}}</span>
+            <div *ngIf="!user" class="btn btn-default btn-sm page-scroll"><span class="fa fa-user"></span> Log in</div>
+
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
   </div>
+  <!-- /.container -->
+</nav>
 
-  <router-outlet></router-outlet>
+<!--Main content goes here-->
+<div class="container" id="main-container">
+  <div class="row">
+    <div class="col-lg-12">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>
 
+<!-- TODO: Fill in footer -->
 
-
-
+<section id="about" class="about-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1>Footer</h1>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!--<br>-->
 <!--<div class="row">-->
-  <!--<router-outlet class="col-md-10"></router-outlet>-->
+<!--<router-outlet class="col-md-10"></router-outlet>-->
 <!--</div>-->
 

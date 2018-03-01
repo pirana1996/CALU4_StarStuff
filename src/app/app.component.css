@@ -3,3 +3,10 @@
     clear: both;
   }
 }
+
+#user-photo {
+  display: inline;
+  width: 20px;
+  margin: 5px;
+  padding-bottom: 3px;
+}
