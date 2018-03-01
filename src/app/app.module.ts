@@ -16,7 +16,7 @@ import {PostManagementService} from './services/post-management.service';
 import {BidManagementService} from './services/bid-management.service';
 
 import { BiddingComponent } from './bidding/bidding.component';
-import { CoreModule } from './core/core.module';
+import { CoreModule } from './auth/core.module';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
