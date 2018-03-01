@@ -14,7 +14,7 @@ export class BidManagementService {
     this.usersCollection = this.afs.collection('Bid');
   }
 
-  public getBids(): Observable<Bid[]> {
+  public getBidListAsObservable(): Observable<Bid[]> {
     return this.usersCollection.snapshotChanges().map(actions => {
       return actions.map(action => {
         const id = +action.payload.doc.id;
