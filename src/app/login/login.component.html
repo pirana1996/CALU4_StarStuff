@@ -1,3 +1,15 @@
-<p>
-  login works!
-</p>
+<!--<div *ngIf="auth.user | async; then authenticated else guest">-->
+  <!--&lt;!&ndash; template will replace this div &ndash;&gt;-->
+<!--</div>-->
+
+
+<!-- User NOT logged in -->
+<ng-template #guest>
+  <h3>Hello, GUEST</h3>
+  <p>Login to get started...</p>
+
+  <button (click)="auth.googleLogin()">
+    <i class="fa fa-google"></i> Connect Google
+  </button>
+
+</ng-template>
