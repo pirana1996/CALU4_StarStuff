@@ -1,11 +1,12 @@
 <div>
   <h2>{{post.title}}</h2>
   <p>{{post.description}}</p>
+  <!--<img *ngFor="let img of post.images" src={{img.url}}>-->
+  <img src={{post.imageUrl}}>
+  <!--<app-bidding></app-bidding>-->
 
-  <app-bidding></app-bidding>
 </div>
 
-<ul *ngFor="let bid of bids">
-  <li>{{bid | json}}</li>
-</ul>
-
+<!--<ul *ngFor="let bid of bids">-->
+  <!--<li>{{bid | json}}</li>-->
+<!--</ul>-->
