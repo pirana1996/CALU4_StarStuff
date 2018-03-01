@@ -12,6 +12,7 @@ import {UserManagementService} from '../services/user-management.service';
   styleUrls: ['./bidding.component.css']
 })
 export class BiddingComponent implements OnInit {
+  newBidEntry: number;
   bids: Bid[];
 
   @Input()
@@ -20,13 +21,12 @@ export class BiddingComponent implements OnInit {
   constructor(private service: BidManagementService, private userService: UserManagementService) { }
 
   ngOnInit() {
-      // this.service.getBidListAsObservable().subscribe(bid => this.bids = bid.sort((a, b) => b.price - a.price));
-    // console.log(this.parentPost.id);
+    this.newBidEntry = this.parentPost.startPrice;
     this.service.getBidsByPostIdAsObservable(String(this.parentPost.id))
       .subscribe(bid => this.bids = bid.sort((a, b) => b.price - a.price));
   }
 
-  bidEntry(newBidEntry: number) {
+  bidEntry() {
     // let user: User;
     let postId;
     let userId;
@@ -36,11 +36,12 @@ export class BiddingComponent implements OnInit {
       postId = this.parentPost.id;
       userId = curUser.uid;
       userEMail = curUser.email;
-      price = newBidEntry;
+      price = this.newBidEntry;
 
       console.log(postId + ' ' + userId + ' ' + userEMail + ' ' + price);
 
       this.service.addBidEntry(new Bid(postId, userId, price, userEMail));
+      this.newBidEntry = price + 1;
     });
   }
 }
