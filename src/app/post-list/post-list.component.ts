@@ -24,5 +24,4 @@ export class PostListComponent implements OnInit {
     );
     console.log(this.posts);
   }
-
 }
