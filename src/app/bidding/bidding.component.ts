@@ -16,7 +16,7 @@ export class BiddingComponent implements OnInit {
   constructor(private service: BidManagementService) { }
 
   ngOnInit() {
-      this.service.getBidListAsObservable().subscribe(bid => this.bids = bid);
+      this.service.getBidListAsObservable().subscribe(bid => this.bids = bid.sort((a, b) => b.price - a.price));
   }
 
 }

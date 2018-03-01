@@ -1,6 +1,23 @@
 
 <div class="container">
-posdk
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Bidder index</th>
+        <th>Bid</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let bid of bids">
+        <td>{{ bid.user }}</td>
+        <td>{{ bid.price }}$</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
   <!--
     <h2>Contextual Classes</h2>
     <p>Contextual classes can be used to color table rows or table cells. The classes that can be used are: .active, .success, .info, .warning, and .danger.</p>
