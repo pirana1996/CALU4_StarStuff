@@ -24,6 +24,17 @@ export class BidManagementService {
     });
   }
 
+  getBidsByPostIdAsObservable(id: string): Observable<Bid[]> {
+    const queryOnCollection = this.afs.collection('Bid', ref => ref.where('id_post', '==', String(id)));
+    return queryOnCollection.snapshotChanges().map(actions => {
+      return actions.map(action => {
+        const id = +action.payload.doc.id;
+        const data = action.payload.doc.data() as Bid;
+        return {id, ...data};
+      });
+    });
+  }
+
   public addBidEntry(bid: Bid): void {
     this.bidsCollection.add({email: bid.email, price: bid.price, id_post: bid.id_post, id_user: bid.id_user});
   }
