@@ -1,5 +1,3 @@
-import {Image} from "./Image";
-
 export class Post {
   id?: number;
   user: number;
