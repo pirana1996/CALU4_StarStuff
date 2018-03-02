@@ -26,6 +26,18 @@ export class PostManagementService {
     });
   }
 
+  public getPostListAsObservableUpcoming(): Observable<Post[]> {
+    return this.postsCollectionRef.snapshotChanges().map(actions => {
+      return actions.map(action => {
+        const id = +action.payload.doc.id;
+        const data = action.payload.doc.data() as Post;
+        return {id, ...data};
+      }).filter(p => p.startDate < new Date());
+    });
+  }
+
+
+
   getPostByIdAsObservable(id: string): Observable<Post> {
     return this.afs.doc('Post/' + id).valueChanges();
   }
