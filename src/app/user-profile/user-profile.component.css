@@ -1,0 +1,13 @@
+#profileDiv{
+  background-color: #E3EEEB;
+  border-radius: 5px;
+  padding: 40px;
+}
+
+.img-custom-rounded{
+  border-radius: 5px;
+}
+
+#profileDiv:hover{
+  background-color: #007AFF;
+}
