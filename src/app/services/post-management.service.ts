@@ -7,7 +7,7 @@ import {Observable} from "rxjs/Observable";
 @Injectable()
 export class PostManagementService {
 
-  upcomingPosts: Post[];
+  upcomingPosts : Post[];
   usersCollectionRef: AngularFirestoreCollection<User>;
   postsCollectionRef: AngularFirestoreCollection<Post>;
   postRef: AngularFirestoreDocument<Post>;
@@ -37,6 +37,7 @@ export class PostManagementService {
   // }
 
 
+
   getPostByIdAsObservable(id: string): Observable<Post> {
     return this.afs.doc('Post/' + id).valueChanges();
   }
@@ -47,22 +48,13 @@ export class PostManagementService {
   }
 
   public updatePost(post: Post) {
-    this.postsCollectionRef.doc(post.id).set({
-      currentBid: post.currentBid,
-      description: post.description,
-      imageUrl: post.imageUrl,
-      startPrice: post.startPrice,
-      title: post.title,
-      user: post.user,
-      endDateTime: post.endDateTime
-    });
+    this.postsCollectionRef.doc(String(post.id)).set({ currentBid: post.currentBid, description: post.description,
+      imageUrl: post.imageUrl, startPrice: post.startPrice, startDate: post.startDate,
+      title: post.title, user: post.user, endDateTime: post.endDateTime});
   }
 
-  // TODO make this to work!!!!
-  // getUpcomingPosts(): Observable<Post[]> {
-  //   const queryOnCollection = this.afs.collection('Post', ref => {
-  //     return ref.where('startDate', '>', new Date()).where('endDateTime', '<', new Date())
-  //   });
+  // getUpcomingPosts(id: string): Observable<Post[]> {
+  //   const queryOnCollection = this.afs.collection('Post', ref => ref.where('startDate', '>', String(id)));
   //   return queryOnCollection.valueChanges();
-  }
+  // }
 }
