@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { Observable } from 'rxjs/Observable';
+import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
+import {Observable} from 'rxjs/Observable';
 // import {User} from "./model/User";
 import {Post} from "../model/Post";
 import {PostManagementService} from "../services/post-management.service";
@@ -27,19 +27,40 @@ export class PostListComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     console.log("init post list");
-    if(this.router.url.endsWith("trending")){
+    if (this.router.url.endsWith("trending")) {
       console.log("trending");
       this.postManagement.getPostListAsObservable().subscribe(
-        post => this.posts = post as Array<Post>
-      );
-    }else if(this.router.url.endsWith("upcoming")){
+        posts => {
+          this.posts = posts as Array<Post>;
+          this.posts = this.posts.filter(p => {
+            if (p.startDate != undefined && p.endDateTime != undefined)
+              return p.startDate.getTime() < new Date().getTime() && p.endDateTime.getTime() > new Date().getTime() ;
+          });
+          console.log(this.posts);
+        });
+    } else if (this.router.url.endsWith("upcoming")) {
       console.log("upcoming")//show upcoming posts
       this.postManagement.getPostListAsObservable().subscribe(
-        post => {this.posts = post as Array<Post>;
-        this.posts = this.posts.filter(p => p.startDate > new Date())
-        }
-      );
-    }else{
+        posts => {
+          this.posts = posts as Array<Post>;
+          this.posts = this.posts.filter(p => {
+            if (p.startDate != undefined)
+              return p.startDate.getTime() > new Date().getTime();
+          });
+          console.log(this.posts);
+        });
+    } else if (this.router.url.endsWith("past")) {
+      console.log("past")//show upcoming posts
+      this.postManagement.getPostListAsObservable().subscribe(
+        posts => {
+          this.posts = posts as Array<Post>;
+          this.posts = this.posts.filter(p => {
+            if (p.endDateTime != undefined && p.startDate != undefined)
+              return p.endDateTime.getTime() < new Date().getTime() && p.startDate.getTime() < new Date().getTime();
+          });
+          console.log(this.posts);
+        });
+    } else {
       console.log("now trending and upcoming");
       this.postManagement.getPostListAsObservable().subscribe(
         post => this.posts = post as Array<Post>
@@ -56,7 +77,9 @@ export class PostListComponent implements OnInit, AfterViewInit {
     this.postType = !this.postType;
   }
 
-  seconds(): number { return 0; }
+  seconds(): number {
+    return 0;
+  }
 
   ngAfterViewInit() {
     setTimeout(() => this.seconds = () => this.timerComponent.seconds, 0);

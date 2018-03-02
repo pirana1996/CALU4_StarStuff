@@ -59,13 +59,14 @@ export class PostDetailsComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit() {
-    let id;
+    let id: string;
     this.route.paramMap
       .switchMap((params: ParamMap) => {
         id = params.get('id');
         return this.service.getPostByIdAsObservable(id);
       })
       .subscribe(post => {
+        console.log(post);
         this.post = post;
         this.post.id = id;
         this.count = Math.round(this.post.endDateTime.getTime() / 1000 - new Date().getTime() / 1000);

@@ -20,7 +20,7 @@ export class PostManagementService {
   public getPostListAsObservable(): Observable<Post[]> {
     return this.postsCollectionRef.snapshotChanges().map(actions => {
       return actions.map(action => {
-        const id = +action.payload.doc.id;
+        const id = action.payload.doc.id;
         const data = action.payload.doc.data() as Post;
         return {id, ...data};
       });
@@ -49,7 +49,8 @@ export class PostManagementService {
 
   public updatePost(post: Post) {
     this.postsCollectionRef.doc(String(post.id)).set({ currentBid: post.currentBid, description: post.description,
-      imageUrl: post.imageUrl, startPrice: post.startPrice, title: post.title, user: post.user, endDateTime: post.endDateTime});
+      imageUrl: post.imageUrl, startPrice: post.startPrice, startDate: post.startDate,
+      title: post.title, user: post.user, endDateTime: post.endDateTime});
   }
 
   // getUpcomingPosts(id: string): Observable<Post[]> {
