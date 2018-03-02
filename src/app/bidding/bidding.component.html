@@ -4,7 +4,7 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>E-mail</th>
+        <th>User</th>
         <th>Bid</th>
       </tr>
     </thead>
@@ -15,7 +15,7 @@
       </tr>
     </tbody>
   </table>
-  <button (click)="bidEntry()">Bid</button><input type="text" [value]="newBidEntry"/>
+  <button (click)="bidEntry()">Bid</button><input [(ngModel)]="newBidEntry" type="text" />
   <!--
     <h2>Contextual Classes</h2>
     <p>Contextual classes can be used to color table rows or table cells. The classes that can be used are: .active, .success, .info, .warning, and .danger.</p>
