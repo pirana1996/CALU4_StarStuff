@@ -13,7 +13,7 @@
 
 <!--If card view is chosen-->
 <div *ngIf="postType" class="container">
-  <div *ngFor="let post of posts" class="col-md-3 col-sm-12">
+  <div *ngFor="let post of posts" class="col-md-3 col-sm-12 cursor-change">
     <div class="col-item" [routerLink]="['/post/details', post.id]">
       <div class="photo">
         <img src="{{post.imageUrl}}" class="img-responsive post-img"/>
@@ -49,15 +49,20 @@
 
 <!--If list view is chosen-->
 <ul *ngIf="!postType" class="list-unstyled">
-  <li *ngFor="let post of posts" class="list-group-item list-group-item-action"
+  <li *ngFor="let post of posts" class="list-group-item list-item"
       [routerLink]="['/post/details', post.id]">
     <div class="row">
       <div class="col-md-2">
         <img src={{post.imageUrl}} width="100px" height="100">
       </div>
-      <div class="col-md-10">
-        <h2>{{ post.title }}</h2>
-        <small>xxx bids</small>
+      <div class="col-md-8">
+        <h3>{{ (post.title.length > 60) ? (post.title | slice : 0 : 60) + '..' :(post.title) }}</h3>
+        <h5 class="price-text-color">{{post.currentBid | currency: 'USD': 'symbol'}}</h5>
+      </div>
+      <div class="col-md-2 text-center">
+        <p class="btn-details" style="margin-top: 28%">
+          <a [routerLink]="['/post/details', post.id]" class="hidden-sm">More details</a>
+        </p>
       </div>
     </div>
   </li>
