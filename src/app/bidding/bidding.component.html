@@ -1,6 +1,12 @@
 
 <div>
 
+  <button (click)="bidEntry()" class="btn btn-primary btn-block">Bid</button><!--<input [(ngModel)]="newBidEntry" type="text" />--->
+  <div class="input-group">
+    <span class="input-group-addon">$</span>
+    <input [(ngModel)]="newBidEntry" type="text" class="form-control" >
+    <span class="input-group-addon">.00</span>
+  </div>
   <div style="overflow-y: scroll; height:500px; width: 100%;">
     <table class="table table-striped" >
       <thead>
@@ -20,12 +26,7 @@
       </tbody>
     </table>
   </div>
-  <button (click)="bidEntry()" class="btn btn-primary btn-block">Bid</button><!--<input [(ngModel)]="newBidEntry" type="text" />--->
-  <div class="input-group">
-    <span class="input-group-addon">$</span>
-    <input [(ngModel)]="newBidEntry" type="text" class="form-control" >
-    <span class="input-group-addon">.00</span>
-  </div>
+
   <!--
     <h2>Contextual Classes</h2>
     <p>Contextual classes can be used to color table rows or table cells. The classes that can be used are: .active, .success, .info, .warning, and .danger.</p>
