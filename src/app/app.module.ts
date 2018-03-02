@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 
 import {AngularFireModule} from 'angularfire2';
@@ -20,6 +19,7 @@ import { BiddingComponent } from './bidding/bidding.component';
 import { CoreModule } from './auth/core.module';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { CountdownTimerComponent } from './countdown-timer/countdown-timer.component';
+import { PostCreateComponent } from './post-create/post-create.component';
 
 
 export const firebaseConfig = {
@@ -42,6 +42,7 @@ export const firebaseConfig = {
     BiddingComponent,
     UserProfileComponent,
     CountdownTimerComponent,
+    PostCreateComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +50,8 @@ export const firebaseConfig = {
     AngularFirestoreModule.enablePersistence(),
     AppRoutingModule,
     CoreModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     UserManagementService,
