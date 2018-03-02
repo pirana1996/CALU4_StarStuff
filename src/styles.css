@@ -39,14 +39,15 @@ The padding is very important to make sure the scrollspy picks up the right area
 of those sections to manage the look and feel of the site. */
 
 #main-container {
-  padding-top: 150px;
+  padding-top: 50px;
   text-align: center;
   background: #fff;
 }
 
-.about-section {
-  height: 50%;
-  padding-top: 150px;
+.footer-section {
+  margin-top: 50px;
+  padding-top: 40px;
+  padding-bottom: 80px;
   text-align: center;
   background: #353A40;
 }
@@ -56,3 +57,19 @@ of those sections to manage the look and feel of the site. */
   border-color: #EEEEEE !important;
 }
 
+.navbar-text-color {
+  color: #E3EEEB !important;
+}
+
+.navbar-background {
+  background-color: #353A40 !important;
+}
+
+.list-item {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.footer-text {
+  color: #E3EEEB;
+}
