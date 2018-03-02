@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import {Post} from "../model/Post";
 import {PostManagementService} from "../services/post-management.service";
 import {CountdownTimerComponent} from "../countdown-timer/countdown-timer.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-post-list',
@@ -14,18 +15,27 @@ import {CountdownTimerComponent} from "../countdown-timer/countdown-timer.compon
 export class PostListComponent implements OnInit, AfterViewInit {
 
   posts: Post[];
+  router: Router;
   postType: boolean;
   @ViewChild(CountdownTimerComponent)
   private timerComponent: CountdownTimerComponent;
 
-  constructor(private postManagement: PostManagementService) {
+  constructor(private postManagement: PostManagementService,
+              router: Router) {
   }
 
   ngOnInit() {
     console.log("init post list");
-    this.postManagement.getPostListAsObservable().subscribe(
-      post => this.posts = post as Array<Post>
-    );
+    if(this.router.url.endsWith("trending")){
+      this.postManagement.getPostListAsObservable().subscribe(
+        post => this.posts = post as Array<Post>
+      );
+    }else if(this.router.url.endsWith("upcoming")){
+      this.postManagement.getPostListAsObservable().subscribe(
+        post => this.posts = post as Array<Post>
+      );
+    }
+
     console.log(this.posts);
     this.postType = true;
   }
