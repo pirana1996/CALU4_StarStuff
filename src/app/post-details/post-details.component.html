@@ -1,6 +1,6 @@
 <div class="row">
 
-  <div *ngIf="post" class="col-md-8">
+  <div *ngIf="post" class="col-md-7">
     <h2>{{ post.title }}</h2>
     <br>
     <img src={{post.imageUrl}} width="300px">
@@ -29,7 +29,7 @@
 
     <span style="display: none">{{countDown|async}}</span>
 --->
-    <div class="col-md-4">
+    <div class="col-md-5">
       <app-bidding *ngIf='post' [parentPost]="post"></app-bidding>
     </div>
 
