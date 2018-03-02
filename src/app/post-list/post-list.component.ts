@@ -34,8 +34,10 @@ export class PostListComponent implements OnInit, AfterViewInit {
       );
     }else if(this.router.url.endsWith("upcoming")){
       console.log("upcoming")//show upcoming posts
-      this.postManagement.getPostListAsObservableUpcoming().subscribe(
-        post => this.posts = post as Array<Post>
+      this.postManagement.getPostListAsObservable().subscribe(
+        post => {this.posts = post as Array<Post>;
+        this.posts = this.posts.filter(p => p.startDate < new Date())
+        }
       );
     }else{
       console.log("now trending and upcoming");

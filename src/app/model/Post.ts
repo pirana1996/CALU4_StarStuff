@@ -5,7 +5,7 @@ export class Post {
   currentBid: number;
   user: number;
   title: string;
-  description: string;
+  description : string;
   imageUrl: string;
   startDate: Date;
   endDateTime: Date;
