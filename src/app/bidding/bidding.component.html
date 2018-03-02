@@ -7,7 +7,7 @@
     <input [(ngModel)]="newBidEntry" type="text" class="form-control" >
     <span class="input-group-addon">.00</span>
   </div>
-  <div style="overflow-y: scroll; height:500px; width: 100%;">
+  <div style="overflow-y: scroll; height:300px; width: 100%;">
     <table class="table table-striped" >
       <thead>
         <tr>
@@ -18,7 +18,7 @@
       <tbody>
 
       <tr *ngFor = "let bid of bids">
-              <td><img src="{{bid.photoURL}}" class="img-circle img-responsive" style="width: 30px; height: 40px; display: inline; float:left;"/>
+              <td><img src="{{bid.photoURL}}" class="img-circle img-responsive" style="width: 20px; height: 20px; display: inline; float:left;"/>
                 <a>{{ bid.displayName }}</a>
               </td>
         <td>{{ bid.price }}$</td>
