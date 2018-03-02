@@ -18,9 +18,11 @@ export class PostCreateComponent implements OnInit {
 
   canAdd: boolean; // whether the post can be added
   postForm: FormGroup;
+  activeUser: User;
 
   ngOnInit(): void {
     this.createForm();
+    this.userService.getActiveUser().subscribe(user => {this.activeUser = user; console.log(user.uid)});
   }
 
   constructor(private fb: FormBuilder,
@@ -56,9 +58,7 @@ export class PostCreateComponent implements OnInit {
     const formModel = this.postForm.value;
     const startPrice: number = formModel.startPrice as number;
     const currentBid: number = 0;
-    let userObject: User;
-    this.userService.getActiveUser().subscribe(u => userObject = u);
-    const user : number = +userObject.uid;
+    const user : string = this.activeUser.uid as string;
     const title: string = formModel.title as string;
     const description: string = formModel.description as string;
     const imageUrl: string = formModel.imageUrl as string;
