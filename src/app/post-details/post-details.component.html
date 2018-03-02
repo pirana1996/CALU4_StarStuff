@@ -15,38 +15,45 @@
     <div id="countdown-timer" *ngIf="!timerOver">
 
       <div class="row">
-        <div class="col-xs-3 col-md-3 timer-part">
+        <!--<div class="col-md-2"></div>-->
+        <div class="col-xs-2 col-md-offset-2 col-md-2 timer-part">
           <div class="min"><span style="line-height: 60px;">{{days}}</span></div>
         </div>
-        <div class="col-xs-3 col-md-3 timer-part">
+        <div class="col-xs-2 col-md-2 timer-part">
           <div class="min"><span style="line-height: 60px;">{{hours}}</span></div>
         </div>
-        <div class="col-xs-3 col-md-3 timer-part">
+        <div class="col-xs-2  col-md-2 timer-part">
           <div class="min"><span style="line-height: 60px;">{{minutes}}</span></div>
         </div>
-        <div class="col-xs-3 col-md-3 timer-part">
+        <div class="col-xs-2  col-md-2 timer-part">
           <div class="min"><span style="line-height: 60px;">{{seconds}}</span></div>
         </div>
+      </div>
 
-        <div class="row">
-          <div class="col-xs-3 col-md-3 timer-part">
-            <div class="text-center">days</div>
-          </div>
-          <div class="col-xs-3 col-md-3 timer-part">
-            <div>hours</div>
-          </div>
-          <div class="col-xs-3 col-md-3 timer-part">
-            <div>minutes</div>
-          </div>
-          <div class="col-xs-3 col-md-3 timer-part">
-            <div>seconds</div>
-          </div>
+      <div class="row">
+        <div class="col-xs-offset-2 col-xs-2 col-md-offset-2 col-md-2 timer-part">
+          <div class="text-center">days</div>
+        </div>
+        <div class="col-xs-2 col-md-2 timer-part">
+          <div>hours</div>
+        </div>
+        <div class="col-xs-2 col-md-2 timer-part">
+          <div>minutes</div>
+        </div>
+        <div class="col-xs-2 col-md-2 timer-part">
+          <div>seconds</div>
         </div>
       </div>
+
     </div>
 
     <span style="display: none">{{countDown|async}}</span>
+
+    <br><br>
+
+    <div class="row">
     <app-bidding *ngIf='post' [parentPost]="post"></app-bidding>
+    </div>
 
 
   </div>
