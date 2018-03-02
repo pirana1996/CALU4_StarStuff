@@ -8,4 +8,5 @@ export class Post {
   description: string;
   imageUrl: string;
   startDate: Date;
+  endDateTime: Date;
 }

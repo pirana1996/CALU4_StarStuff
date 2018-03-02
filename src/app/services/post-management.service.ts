@@ -37,7 +37,7 @@ export class PostManagementService {
 
   public updatePost(post: Post) {
     this.postsCollectionRef.doc(String(post.id)).set({ currentBid: post.currentBid, description: post.description,
-      imageUrl: post.imageUrl, startPrice: post.startPrice, title: post.title, user: post.user});
+      imageUrl: post.imageUrl, startPrice: post.startPrice, title: post.title, user: post.user, endDateTime: post.endDateTime});
   }
 
 }
