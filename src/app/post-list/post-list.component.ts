@@ -14,6 +14,7 @@ import {CountdownTimerComponent} from "../countdown-timer/countdown-timer.compon
 export class PostListComponent implements OnInit, AfterViewInit {
 
   posts: Post[];
+  postType: boolean;
   @ViewChild(CountdownTimerComponent)
   private timerComponent: CountdownTimerComponent;
 
@@ -26,6 +27,7 @@ export class PostListComponent implements OnInit, AfterViewInit {
       post => this.posts = post as Array<Post>
     );
     console.log(this.posts);
+    this.postType = true;
   }
 
 

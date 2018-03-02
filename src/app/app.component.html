@@ -1,5 +1,5 @@
 <!-- Navigation -->
-<nav class="navbar navbar-default navbar-fixed-top navbar-background" role="navigation">
+<nav class="navbar navbar-default navbar-fixed-top navbar-background" role="navigation" style="max-height: 90px">
   <div class="container">
     <div class="navbar-header page-scroll">
       <button type="button" class="navbar-toggle navbar-background" data-toggle="collapse"
@@ -44,7 +44,6 @@
             <div class="btn btn-default page-scroll login-btn">
               <span class="fa fa-user">
               </span> Log in
-
             </div>
           </a>
 
@@ -58,7 +57,7 @@
 </nav>
 
 <!--TODO: Implement the following color somewhere in the theme-->
-<div class="container-fluid text-center" style="background-color: #007AFF; margin-top: 90px">
+<div class="container-fluid text-center" style="background-color: #007AFF; margin-top: 85px">
   <h2>Add the following color somewhere in the theme! #007AFF</h2>
 
 </div>
@@ -88,10 +87,10 @@
         <h5>Menu</h5>
         <ul class="list-unstyled">
           <li class="list-item">
-            <a href="#" class="footer-text">Trending</a>
+            <a routerLink="/posts/list" class="footer-text">Trending</a>
           </li>
           <li class="list-item">
-            <a href="#" class="footer-text">Upcoming</a>
+            <a routerLink="/" class="footer-text">Upcoming</a>
           </li>
           <li class="list-item">
             <a href="#" class="footer-text">Past Auctions</a>
@@ -120,7 +119,7 @@
       </div>
       <div class="col-md-3 col-sm-12">
         <h5>Get Started</h5>
-        <div class="btn btn-default" style="margin-top: 15px">
+        <div routerLink="/login" class="btn btn-default" style="margin-top: 15px">
           <i class="fa fa-google"></i> Log in with Google
         </div>
       </div>
