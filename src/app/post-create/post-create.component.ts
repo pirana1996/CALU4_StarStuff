@@ -78,7 +78,7 @@ export class PostCreateComponent implements OnInit {
         });
     }
     else {
-      console.log("vlaga vo else")
+      console.log("vlaga vo else");
       this.router.navigateByUrl('/login');
     }
   }
