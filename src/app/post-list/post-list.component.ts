@@ -11,18 +11,16 @@ import {CountdownTimerComponent} from "../countdown-timer/countdown-timer.compon
   templateUrl: './post-list.component.html',
   styleUrls: ['./post-list.component.css']
 })
-export class PostListComponent implements OnInit, AfterViewInit {
+export class PostListComponent implements OnInit {
 
   posts: Post[];
   postType: boolean;
-  @ViewChild(CountdownTimerComponent)
-  private timerComponent: CountdownTimerComponent;
 
   constructor(private postManagement: PostManagementService) {
   }
 
   ngOnInit() {
-    console.log("init post list");
+    console.log('init post list');
     this.postManagement.getPostListAsObservable().subscribe(
       post => this.posts = post as Array<Post>
     );
@@ -30,20 +28,4 @@ export class PostListComponent implements OnInit, AfterViewInit {
     this.postType = true;
   }
 
-
-
-
-  seconds(): number { return 0; }
-
-  ngAfterViewInit() {
-    setTimeout(() => this.seconds = () => this.timerComponent.seconds, 0);
-  }
-
-  start() {
-    this.timerComponent.start();
-  }
-
-  stop() {
-    this.timerComponent.stop();
-  }
 }
