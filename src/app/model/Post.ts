@@ -1,6 +1,6 @@
 
 export class Post {
-  id?: number;
+  id?: string;
   startPrice: number;
   currentBid: number;
   user: number;
