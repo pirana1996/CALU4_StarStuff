@@ -9,12 +9,14 @@ import {BiddingComponent} from "../bidding/bidding.component";
 
 import {UserProfileComponent} from "../user-profile/user-profile.component";
 import {LoginComponent} from "../login/login.component";
+import {PostCreateComponent} from "../post-create/post-create.component";
 
 
 const appRoutes: Routes = [
   { path: 'posts/list', component: PostListComponent },
   // { path: 'posts/bidding', component: BiddingComponent },
   { path: 'post/details/:id', component:  PostDetailsComponent },
+  { path: 'post/create', component: PostCreateComponent},
   { path: 'login', component:  LoginComponent },
   { path: 'profile', component:  UserProfileComponent },
   { path: '',   redirectTo: 'posts/list', pathMatch: 'full' },
