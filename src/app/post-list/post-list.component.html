@@ -1,40 +1,53 @@
+<div class="container text-left">
+  <div class="row">
+    <div class="col-xs-2">
+      <h3>Posts</h3>
+    </div>
+    <div class="col-xs-offset-8 col-xs-2">
+      <h3 (click)="changeDisplayFormat()" *ngIf="!postType" class="format-icon"><i class="fa fa-bars"></i></h3>
+      <h3 (click)="changeDisplayFormat()" *ngIf="postType" class="format-icon"><i class="fa fa-th"></i></h3>
+    </div>
+  </div>
+  <hr>
+</div>
 
+<!--If card view is chosen-->
 <div *ngIf="postType" class="container">
-  <div class="col-md-4 col-sm-12">
-    <div class="col-item">
+  <div *ngFor="let post of posts" class="col-md-3 col-sm-12">
+    <div class="col-item" [routerLink]="['/post/details', post.id]">
       <div class="photo">
-        <img src="http://via.placeholder.com/500x300.gif" class="img-responsive" alt="a" />
+        <img src="{{post.imageUrl}}" class="img-responsive post-img"/>
       </div>
       <div class="info">
-        <div class="row">
-          <div class="price col-md-6">
-            <h5>
-              Sample Product</h5>
-            <h5 class="price-text-color">
-              $199.99</h5>
-          </div>
-          <div class="rating hidden-sm col-md-6">
-            <i class="price-text-color fa fa-star"></i>
-            <i class="price-text-color fa fa-star"></i>
-            <i class="price-text-color fa fa-star"></i>
-            <i class="price-text-color fa fa-star"></i>
-            <i class="price-text-color fa fa-star-half"></i>
+        <div class="row text-center">
+          <div class="price col-xs-12">
+
+
+            <!--TODO: Fix incompatible sizes issue-->
+
+            <h5>{{ (post.title.length > 25) ? (post.title | slice : 0 : 25) + '..' :(post.title) }}</h5>
+            <h5 class="price-text-color">{{post.currentBid | currency: 'USD': 'symbol'}}</h5>
           </div>
         </div>
         <div class="separator clear-left">
           <p class="btn-add">
-            <i class="fa fa-shopping-cart"></i><a href="#" class="hidden-sm">Add to cart</a></p>
+
+
+            <!--TODO: IMPORTANT!-->
+            <!--TODO: Add router for bid now!!-->
+
+            <a href="#" class="hidden-sm">Bid now</a></p>
           <p class="btn-details">
-            <i class="fa fa-shopping-cart"></i><a href="#" class="hidden-sm">More details</a></p>
+            <a [routerLink]="['/post/details', post.id]" class="hidden-sm">More details</a></p>
         </div>
         <div class="clearfix">
         </div>
       </div>
     </div>
   </div>
-  </div>
+</div>
 
-
+<!--If list view is chosen-->
 <ul *ngIf="!postType" class="list-unstyled">
   <li *ngFor="let post of posts" class="list-group-item list-group-item-action"
       [routerLink]="['/post/details', post.id]">
@@ -50,8 +63,4 @@
   </li>
 </ul>
 
-<button (click)="start()">Start</button>
-<button (click)="stop()">Stop</button>
-<div class="seconds">{{ seconds() }}</div>
-<app-countdown-timer></app-countdown-timer>
 
