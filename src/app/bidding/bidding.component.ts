@@ -19,7 +19,8 @@ export class BiddingComponent implements OnInit {
   @Input()
   parentPost: Post;
 
-  constructor(private service: BidManagementService, private userService: UserManagementService, private postService: PostManagementService) { }
+  constructor(private service: BidManagementService, private userService: UserManagementService,
+              private postService: PostManagementService) { }
 
   ngOnInit() {
     this.newBidEntry = this.parentPost.currentBid + 1;
@@ -28,6 +29,8 @@ export class BiddingComponent implements OnInit {
   }
 
   bidEntry() {
+    this.newBidEntry  = Number(this.newBidEntry);
+    console.log(this.newBidEntry);
     let postId;
     let userId;
     let userEMail;
@@ -40,6 +43,7 @@ export class BiddingComponent implements OnInit {
       userEMail = curUser.email;
       userName = curUser.displayName;
       userPhoto = curUser.photoURL;
+      console.log(this.newBidEntry);
       price = this.newBidEntry;
       this.parentPost.currentBid = this.newBidEntry;
       console.log(postId + ' ' + userId + ' ' + userEMail + ' ' + price);
