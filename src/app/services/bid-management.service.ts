@@ -36,7 +36,8 @@ export class BidManagementService {
   }
 
   public addBidEntry(bid: Bid): void {
-    this.bidsCollection.add({email: bid.email, price: bid.price, id_post: bid.id_post, id_user: bid.id_user});
+    this.bidsCollection.add({email: bid.email, price: bid.price, id_post: bid.id_post,
+      id_user: bid.id_user, photoURL: bid.photoURL, displayName: bid.displayName});
   }
 
 }

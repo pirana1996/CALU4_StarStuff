@@ -10,7 +10,9 @@
     </thead>
     <tbody>
       <tr *ngFor = "let bid of bids">
-        <td>{{ bid.email }}</td>
+        <td><img src="{{bid.photoURL}}" class="img-circle img-responsive" style="width: 20%; display: inline; float:left;"/>
+          {{ bid.displayName }}
+        </td>
         <td>{{ bid.price }}$</td>
       </tr>
     </tbody>

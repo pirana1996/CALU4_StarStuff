@@ -7,21 +7,9 @@
     <br><br>
     <p>{{post.description}}</p>
     <small>Start price was {{ post.startPrice }}$</small>
-
+  </div>
+<!--
     <div id="countdown-timer">
-      <!--<div>-->
-        <!--<span class="timer-part col-md-4">{{days}}</span>-->
-        <!--<span class="timer-part col-md-4">{{hours}}</span>-->
-        <!--<span class="timer-part col-md-4">{{minutes}}</span>-->
-        <!--<span class="timer-part col-md-4">{{seconds}}</span>-->
-      <!--</div>-->
-      <!--<div>-->
-        <!--<span class="col-md-4">days</span>-->
-        <!--<small>hours</small>-->
-        <!--<small>minutes</small>-->
-        <!--<small>seconds</small>-->
-      <!--</div>-->
-
 
     <table>
       <tr>
@@ -40,7 +28,7 @@
     </div>
 
     <span style="display: none">{{countDown|async}}</span>
-
+--->
     <div class="col-md-4">
       <app-bidding *ngIf='post' [parentPost]="post"></app-bidding>
     </div>
