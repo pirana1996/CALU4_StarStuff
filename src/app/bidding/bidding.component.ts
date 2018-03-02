@@ -32,10 +32,14 @@ export class BiddingComponent implements OnInit {
     let userId;
     let userEMail;
     let price;
+    let userName;
+    let userPhoto;
     this.userService.getActiveUser().subscribe(curUser => {
       postId = this.parentPost.id;
       userId = curUser.uid;
       userEMail = curUser.email;
+      userName = curUser.displayName;
+      userPhoto = curUser.photoURL;
       price = this.newBidEntry;
 
       console.log(postId + ' ' + userId + ' ' + userEMail + ' ' + price);
