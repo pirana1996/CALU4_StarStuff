@@ -51,7 +51,7 @@ export class BiddingComponent implements OnInit {
       this.parentPost.currentBid = this.newBidEntry;
       console.log(postId + ' ' + userId + ' ' + userEMail + ' ' + price);
 
-      if (this.parentPost.currentBid <= Number(price)) {
+      if (this.parentPost.currentBid < Number(price)) {
         this.service.addBidEntry(new Bid(postId, userId, price, userEMail, userPhoto, userName));
         this.postService.updatePost(this.parentPost);
       }
