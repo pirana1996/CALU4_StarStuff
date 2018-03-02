@@ -1,62 +1,138 @@
-<form [formGroup]="postForm" (ngSubmit)="onSubmit()" novalidate>
+<div class="container">
+  <form [formGroup]="postForm" (ngSubmit)="onSubmit()" novalidate class="form-custom">
 
-  <div class="row">
-    <button class="btn btn-link" (click)="back()"><span class="fa fa-chevron-left"></span> Back</button>
-  </div>
+    <div class="row">
+      <button class="btn btn-link" (click)="back()"><span class="fa fa-chevron-left"></span> Back</button>
+    </div>
 
-  <br>
+    <br>
 
-  <div class="form-group">
-    <label class="center-block">Title:
-      <input class="form-control" formControlName="title" required>
-    </label>
-  </div>
+    <div class="form-group">
+      <label class="center-block">Title:
+        <input class="form-control" formControlName="title">
+      </label>
+    </div>
 
-  <div class="form-group">
-    <label class="center-block">Description:
-      <input class="form-control" formControlName="description" required minlength="3" maxlength="20">
-    </label>
-  </div>
+    <!--title validation-->
+    <div
+      *ngIf="postForm.controls['title'].invalid && (postForm.controls['title'].dirty || postForm.controls['title'].touched)"
+      class="alert alert-danger">
 
-  <!--&lt;!&ndash;First name validation; firstName is from the get firstName method in the component&ndash;&gt;-->
-  <!--<div *ngIf="title.invalid && (title.dirty || title.touched)"-->
-       <!--class="alert alert-danger">-->
-
-    <!--<div *ngIf="title.errors.required">-->
-      <!--Title is required.-->
-    <!--</div>-->
-    <!--<div *ngIf="title.errors.minlength">-->
+      <div *ngIf="postForm.controls['title'].errors.required">
+        Title is required.
+      </div>
+      <!--<div *ngIf="postForm.controls['title'].errors.minlength">-->
       <!--Title must be at least 3 characters long.-->
-    <!--</div>-->
-  <!--</div>-->
+      <!--</div>-->
+    </div>
 
-  <div class="form-group">
-    <label class="center-block">Start Price:
-      <input class="form-control" formControlName="startPrice" required maxlength="20">
-    </label>
-  </div>
+    <div class="form-group">
+      <label class="center-block">Description:
+        <textarea class="form-control" formControlName="description" cols="5">
+      </textarea>
+      </label>
+    </div>
 
-  <!--&lt;!&ndash;Last name validation; lastName is from the get lastName method in the component&ndash;&gt;-->
-  <!--<div *ngIf="startPrice.invalid && (startPrice.dirty || startPrice.touched)"-->
-       <!--class="alert alert-danger">-->
+    <!--discription validation-->
+    <div *ngIf="postForm.controls['description'].invalid && (postForm.controls['description'].dirty ||
+  postForm.controls['description'].touched)"
+         class="alert alert-danger">
 
-    <!--<div *ngIf="startPrice.errors.required">-->
-      <!--Start rice is required.-->
-    <!--</div>-->
-    <!--<div *ngIf="startPrice.errors.maxlength">-->
-      <!--Start price must be at up to 20 digits long.-->
-    <!--</div>-->
-  <!--</div>-->
+      <div *ngIf="postForm.controls['description'].errors.required">
+        Title is required.
+      </div>
+      <!--<div *ngIf="postForm.controls['title'].errors.minlength">-->
+      <!--Title must be at least 3 characters long.-->
+      <!--</div>-->
+    </div>
 
-  <!--<br><br>-->
+    <div class="form-group">
+      <label class="center-block">Photo URL:
+        <input class="form-control" formControlName="imageUrl" required minlength="3" maxlength="20">
+      </label>
+    </div>
 
-  <div class="row">
-    <button (click)="onSave()"
-            [disabled]="postForm.pristine" class="col-md-4 col-md-offset-1 btn btn-success">Add
-    </button>
-    <button type="reset" (click)="revertForm()"
-            class="col-md-4 col-md-offset-2 btn btn-danger">Clean
-    </button>
-  </div>
+    <!--Photo link validation-->
+    <div *ngIf="postForm.controls['imageUrl'].invalid && (postForm.controls['imageUrl'].dirty ||
+  postForm.controls['imageUrl'].touched)"
+         class="alert alert-danger">
 
-</form>
+      <div *ngIf="postForm.controls['imageUrl'].errors.required">
+        Title is required.
+      </div>
+      <!--<div *ngIf="postForm.controls['title'].errors.minlength">-->
+      <!--Title must be at least 3 characters long.-->
+      <!--</div>-->
+    </div>
+
+
+    <div class="form-group">
+      <label class="center-block">Start Price:
+        <input class="form-control" formControlName="startPrice">
+      </label>
+    </div>
+
+    <!--Start price validation-->
+    <div *ngIf="postForm.controls['startPrice'].invalid && (postForm.controls['startPrice'].dirty ||
+  postForm.controls['startPrice'].touched)"
+         class="alert alert-danger">
+
+      <div *ngIf="postForm.controls['startPrice'].errors.required">
+        Start price is required.
+      </div>
+      <div *ngIf="postForm.controls['startPrice'].errors.pattern">
+        Start price must consist of digits.
+      </div>
+    </div>
+
+    <br><br>
+
+    <div class="form-group">
+      <label class="center-block">Start Date:
+        <input class="form-control" formControlName="startDate">
+      </label>
+    </div>
+
+    <!--Start date validation-->
+    <div *ngIf="postForm.controls['startDate'].invalid && (postForm.controls['startDate'].dirty ||
+  postForm.controls['startDate'].touched)"
+         class="alert alert-danger">
+
+      <div *ngIf="postForm.controls['startDate'].errors.required">
+        Start date is required.
+      </div>
+      <div *ngIf="postForm.controls['startDate'].errors.pattern">
+        Start date invalid format.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="center-block">End Date:
+        <input class="form-control" formControlName="endDateTime">
+      </label>
+    </div>
+
+    <!--End date validation-->
+    <div *ngIf="postForm.controls['endDateTime'].invalid && (postForm.controls['endDateTime'].dirty ||
+  postForm.controls['endDateTime'].touched)"
+         class="alert alert-danger">
+
+      <div *ngIf="postForm.controls['endDateTime'].errors.required">
+        End date is required.
+      </div>
+      <div *ngIf="postForm.controls['endDateTime'].errors.pattern">
+        End date invalid format.
+      </div>
+    </div>
+
+    <div class="row">
+      <button (click)="onSave()"
+              [disabled]="postForm.pristine || postForm.invalid" class="col-md-4 col-md-offset-1 btn btn-success">Add
+      </button>
+      <button type="reset" (click)="revertForm()"
+              class="col-md-4 col-md-offset-2 btn btn-danger">Clean
+      </button>
+    </div>
+
+  </form>
+</div>

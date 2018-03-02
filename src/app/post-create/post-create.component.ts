@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {Location} from '@angular/common';
 import {PostManagementService} from "../services/post-management.service";
@@ -7,6 +7,7 @@ import {Post} from "../model/Post";
 import {UserManagementService} from "../services/user-management.service";
 import {Observable} from "rxjs";
 import {User} from "../model/User";
+import DateTimeFormat = Intl.DateTimeFormat;
 
 @Component({
   selector: 'app-post-create',
@@ -35,13 +36,12 @@ export class PostCreateComponent implements OnInit {
 
   createForm() {
     this.postForm = this.fb.group({
-      startPrice: '',
-      currentBid: '',
-      title: '',
-      description: '',
-      imageUrl: '',
-      startDate: '',
-      endDateTime: '',
+      startPrice: ['', [Validators.required, Validators.pattern("^[0-9]{1,9}[\.,]{0,1}[0-9]{1,2}")]],
+      title: ['', Validators.required],
+      description: ['', Validators.required],
+      imageUrl: ['', Validators.required],
+      startDate: ['', Validators.required],
+      endDateTime: ['', Validators.required],
     });
   }
 
@@ -62,8 +62,8 @@ export class PostCreateComponent implements OnInit {
     const title: string = formModel.title as string;
     const description: string = formModel.description as string;
     const imageUrl: string = formModel.imageUrl as string;
-    const startDate: Date = formModel.startDate as Date;
-    const endDateTime: Date = formModel.endDateTime as Date;
+    const startDate: Date = new Date();//formModel.startDate as Date;
+    const endDateTime: Date = new Date();// formModel.endDateTime as Date;
     return new Post(startPrice, currentBid, user, title, description, imageUrl, startDate, endDateTime);
   }
 
