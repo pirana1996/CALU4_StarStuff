@@ -57,4 +57,11 @@ export class PostManagementService {
   //   const queryOnCollection = this.afs.collection('Post', ref => ref.where('startDate', '>', String(id)));
   //   return queryOnCollection.valueChanges();
   // }
+
+  public addPost(post: Post) {
+      const a = this.postsCollectionRef.add({ currentBid: post.currentBid, description: post.description,
+      imageUrl: post.imageUrl, startPrice: post.startPrice, title: post.title, user: post.user,
+        startDate: post.startDate, endDateTime: post.endDateTime});
+      return Observable.fromPromise(a);
+  }
 }
