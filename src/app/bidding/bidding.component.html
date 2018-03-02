@@ -1,26 +1,39 @@
-
 <div>
 
-  <button (click)="bidEntry()" class="btn btn-primary btn-block">Bid</button><!--<input [(ngModel)]="newBidEntry" type="text" />--->
-  <div class="input-group">
-    <span class="input-group-addon">$</span>
-    <input [(ngModel)]="newBidEntry" type="text" class="form-control" >
-    <span class="input-group-addon">.00</span>
+
+  <div class="row">
+
+    <div class="col-xs-12 col-sm-6">
+      <div class="input-group">
+        <span class="input-group-addon">$</span>
+        <input [(ngModel)]="newBidEntry" type="text" class="form-control">
+        <span class="input-group-addon">.00</span>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-6">
+      <button (click)="bidEntry()" class="btn btn-primary btn-block">Bid</button>
+    </div>
+
   </div>
+
+  <br><br>
+
   <div style="overflow-y: scroll; height:300px; width: 100%;">
-    <table class="table table-striped" >
+    <table class="table table-striped">
       <thead>
-        <tr>
-          <th>User</th>
-          <th>Bid</th>
-        </tr>
+      <tr>
+        <th>User</th>
+        <th>Bid</th>
+      </tr>
       </thead>
       <tbody>
 
-      <tr *ngFor = "let bid of bids">
-              <td><img src="{{bid.photoURL}}" class="img-circle img-responsive" style="width: 20px; height: 20px; display: inline; float:left;"/>
-                <a>{{ bid.displayName }}</a>
-              </td>
+      <tr *ngFor="let bid of bids">
+        <td><img src="{{bid.photoURL}}" class="img-circle img-responsive"
+                 style="width: 20px; height: 20px; display: inline; float:left;"/>
+          <a>{{ bid.displayName }}</a>
+        </td>
         <td>{{ bid.price }}$</td>
       </tr>
       </tbody>
@@ -47,45 +60,45 @@
         <td>100$</td>
       </tr>
 --->
-    <!--
-    <tr>
-      <td>Default</td>
-      <td>Defaultson</td>
-      <td>def@somemail.com</td>
-      <td>100$</td>
-    </tr>
-    <tr class="success">
-      <td>Success</td>
-      <td>Doe</td>
-      <td>john@example.com</td>
-      <td>100$</td>
-    </tr>
-    <tr class="danger">
-      <td>Danger</td>
-      <td>Moe</td>
-      <td>mary@example.com</td>
-      <td>100$</td>
-    </tr>
-    <tr class="info">
-      <td>Info</td>
-      <td>Dooley</td>
-      <td>july@example.com</td>
-      <td>100$</td>
-    </tr>
-    <tr class="warning">
-      <td>Warning</td>
-      <td>Refs</td>
-      <td>bo@example.com</td>
-      <td>100$</td>
-    </tr>
-    <tr class="active">
-      <td>Active</td>
-      <td>Activeson</td>
-      <td>act@example.com</td>
-      <td>100$</td>
-    </tr>
-    </tbody>
-  </table>-->
+  <!--
+  <tr>
+    <td>Default</td>
+    <td>Defaultson</td>
+    <td>def@somemail.com</td>
+    <td>100$</td>
+  </tr>
+  <tr class="success">
+    <td>Success</td>
+    <td>Doe</td>
+    <td>john@example.com</td>
+    <td>100$</td>
+  </tr>
+  <tr class="danger">
+    <td>Danger</td>
+    <td>Moe</td>
+    <td>mary@example.com</td>
+    <td>100$</td>
+  </tr>
+  <tr class="info">
+    <td>Info</td>
+    <td>Dooley</td>
+    <td>july@example.com</td>
+    <td>100$</td>
+  </tr>
+  <tr class="warning">
+    <td>Warning</td>
+    <td>Refs</td>
+    <td>bo@example.com</td>
+    <td>100$</td>
+  </tr>
+  <tr class="active">
+    <td>Active</td>
+    <td>Activeson</td>
+    <td>act@example.com</td>
+    <td>100$</td>
+  </tr>
+  </tbody>
+</table>-->
 </div>
 
 
