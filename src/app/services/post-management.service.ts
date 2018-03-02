@@ -7,6 +7,7 @@ import {Observable} from "rxjs/Observable";
 @Injectable()
 export class PostManagementService {
 
+  upcomingPosts : Post[];
   usersCollectionRef: AngularFirestoreCollection<User>;
   postsCollectionRef: AngularFirestoreCollection<Post>;
   postRef: AngularFirestoreDocument<Post>;
@@ -19,22 +20,21 @@ export class PostManagementService {
   public getPostListAsObservable(): Observable<Post[]> {
     return this.postsCollectionRef.snapshotChanges().map(actions => {
       return actions.map(action => {
-        const id = +action.payload.doc.id;
+        const id = action.payload.doc.id;
         const data = action.payload.doc.data() as Post;
         return {id, ...data};
       });
     });
   }
 
-  public getPostListAsObservableUpcoming(): Observable<Post[]> {
-    return this.postsCollectionRef.snapshotChanges().map(actions => {
-      return actions.map(action => {
-        const id = +action.payload.doc.id;
-        const data = action.payload.doc.data() as Post;
-        return {id, ...data};
-      }).filter(p => p.startDate < new Date());
-    });
-  }
+  // public getPostListAsObservableUpcoming(): Post[] {
+  //
+  //   this.getPostListAsObservable().subscribe(
+  //     post => this.upcomingPosts = post as Array<Post>);
+  //
+  //   this.upcomingPosts.filter(p => p.startDate < new Date());
+  //   return this.upcomingPosts;
+  // }
 
 
 
@@ -53,4 +53,8 @@ export class PostManagementService {
       title: post.title, user: post.user, endDateTime: post.endDateTime});
   }
 
+  // getUpcomingPosts(id: string): Observable<Post[]> {
+  //   const queryOnCollection = this.afs.collection('Post', ref => ref.where('startDate', '>', String(id)));
+  //   return queryOnCollection.valueChanges();
+  // }
 }
