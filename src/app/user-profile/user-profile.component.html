@@ -18,9 +18,12 @@
 <!-- User logged in -->
 <ng-template #authenticated>
   <div *ngIf="auth.user | async as user">
-    <h3>Hello, {{ user.displayName }}</h3>
-    <img  [src]="user.photoURL">
-    <!--<p>UID: {{ user.uid }}</p>-->
-    <button (click)="auth.signOut()">Logout</button>
-  </div>
+    <div class="row" >
+        <div class="col-xs-4 col-xs-offset-4"id="profileDiv">
+          <img class="img-responsive" [src]="user.photoURL" alt="Profile Photo">
+            <h4 class="card-title">{{ user.displayName }}</h4>
+            <button class="btn btn-default" (click)="auth.signOut()">Logout</button>
+        </div>
+      </div>
+    </div>
 </ng-template>
