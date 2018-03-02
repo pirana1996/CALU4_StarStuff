@@ -5,6 +5,7 @@ import {Post} from '../model/Post';
 import {User} from '../model/User';
 import {Bid} from '../model/Bid';
 import {UserManagementService} from '../services/user-management.service';
+import {PostManagementService} from "../services/post-management.service";
 
 @Component({
   selector: 'app-bidding',
@@ -18,16 +19,15 @@ export class BiddingComponent implements OnInit {
   @Input()
   parentPost: Post;
 
-  constructor(private service: BidManagementService, private userService: UserManagementService) { }
+  constructor(private service: BidManagementService, private userService: UserManagementService, private postService: PostManagementService) { }
 
   ngOnInit() {
-    this.newBidEntry = this.parentPost.startPrice;
+    this.newBidEntry = this.parentPost.currentBid + 1;
     this.service.getBidsByPostIdAsObservable(String(this.parentPost.id))
       .subscribe(bid => this.bids = bid.sort((a, b) => b.price - a.price));
   }
 
   bidEntry() {
-    // let user: User;
     let postId;
     let userId;
     let userEMail;
@@ -41,11 +41,12 @@ export class BiddingComponent implements OnInit {
       userName = curUser.displayName;
       userPhoto = curUser.photoURL;
       price = this.newBidEntry;
-
+      this.parentPost.currentBid = this.newBidEntry;
       console.log(postId + ' ' + userId + ' ' + userEMail + ' ' + price);
 
       this.service.addBidEntry(new Bid(postId, userId, price, userEMail));
-      this.newBidEntry = price + 1;
+      this.postService.updatePost(this.parentPost);
+      this.newBidEntry = this.parentPost.currentBid + 1;
     });
   }
 }

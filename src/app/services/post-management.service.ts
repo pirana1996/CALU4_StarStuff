@@ -5,14 +5,11 @@ import {Post} from "../model/Post";
 import {Observable} from "rxjs/Observable";
 
 @Injectable()
-export class PostManagementService implements OnInit {
+export class PostManagementService {
 
   usersCollectionRef: AngularFirestoreCollection<User>;
   postsCollectionRef: AngularFirestoreCollection<Post>;
   postRef: AngularFirestoreDocument<Post>;
-
-  ngOnInit(): void {
-  }
 
   constructor(private afs: AngularFirestore) {
     this.usersCollectionRef = this.afs.collection('User');
@@ -36,6 +33,11 @@ export class PostManagementService implements OnInit {
   getPostsByUserIdAsObservable(id: string): Observable<Post[]> {
     const queryOnCollection = this.afs.collection('Post', ref => ref.where('user', '==', String(id)));
     return queryOnCollection.valueChanges();
+  }
+
+  public updatePost(post: Post) {
+    this.postsCollectionRef.doc(String(post.id)).set({ currentBid: post.currentBid, description: post.description,
+      imageUrl: post.imageUrl, startPrice: post.startPrice, title: post.title, user: post.user, endDateTime: post.endDateTime});
   }
 
 }
