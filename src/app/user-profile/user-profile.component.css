@@ -1,13 +1,15 @@
 #profileDiv{
-  background-color: #E3EEEB;
   border-radius: 5px;
+  border: 0.5px solid gray;
   padding: 40px;
 }
-
 .img-custom-rounded{
   border-radius: 5px;
+  /*width: 350px;*/
+  /*height: 200px;*/
 }
 
+
 #profileDiv:hover{
-  background-color: #007AFF;
+  background-color: #E3EEEB;
 }

@@ -5,11 +5,17 @@
 
 <!-- User NOT logged in -->
 <ng-template #guest>
-  <h3>Hello, GUEST</h3>
-  <p>Login to get started...</p>
+  <h4>Login to get started</h4>
 
-  <button (click)="auth.googleLogin()">
-    <i class="fa fa-google"></i> Connect Google
+
+  <button class="btn btn-default" (click)="auth.facebookLogin()">
+    <i class="fa fa-facebook"> </i> Connect with Facebook
   </button>
+  <br>
+  <br>
+  <button class="btn btn-default" (click)="auth.googleLogin()">
+    <i class="fa fa-google"> </i> Connect with Google
+  </button>
+
 
 </ng-template>
