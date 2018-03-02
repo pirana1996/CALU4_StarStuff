@@ -22,22 +22,32 @@ export class PostListComponent implements OnInit, AfterViewInit {
 
   constructor(private postManagement: PostManagementService,
               router: Router) {
+    this.router = router;
   }
 
   ngOnInit() {
     console.log("init post list");
     if(this.router.url.endsWith("trending")){
+      console.log("trending");
       this.postManagement.getPostListAsObservable().subscribe(
         post => this.posts = post as Array<Post>
       );
     }else if(this.router.url.endsWith("upcoming")){
+      console.log("upcoming")//show upcoming posts
+      this.postManagement.getPostListAsObservableUpcoming().subscribe(
+        post => this.posts = post as Array<Post>
+      );
+    }else{
+      console.log("now trending and upcoming");
       this.postManagement.getPostListAsObservable().subscribe(
         post => this.posts = post as Array<Post>
       );
     }
 
+
     console.log(this.posts);
     this.postType = true;
+    console.log(this.postType);
   }
 
 
