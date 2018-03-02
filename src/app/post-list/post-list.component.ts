@@ -30,8 +30,9 @@ export class PostListComponent implements OnInit, AfterViewInit {
     this.postType = true;
   }
 
-
-
+  changeDisplayFormat(): void {
+    this.postType = !this.postType;
+  }
 
   seconds(): number { return 0; }
 
