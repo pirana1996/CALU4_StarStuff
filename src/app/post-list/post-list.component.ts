@@ -36,7 +36,7 @@ export class PostListComponent implements OnInit, AfterViewInit {
       console.log("upcoming")//show upcoming posts
       this.postManagement.getPostListAsObservable().subscribe(
         post => {this.posts = post as Array<Post>;
-        this.posts = this.posts.filter(p => p.startDate < new Date())
+        this.posts = this.posts.filter(p => p.startDate > new Date())
         }
       );
     }else{

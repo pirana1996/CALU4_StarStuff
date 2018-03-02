@@ -52,4 +52,8 @@ export class PostManagementService {
       imageUrl: post.imageUrl, startPrice: post.startPrice, title: post.title, user: post.user, endDateTime: post.endDateTime});
   }
 
+  // getUpcomingPosts(id: string): Observable<Post[]> {
+  //   const queryOnCollection = this.afs.collection('Post', ref => ref.where('startDate', '>', String(id)));
+  //   return queryOnCollection.valueChanges();
+  // }
 }
