@@ -22,6 +22,7 @@ export class PostDetailsComponent implements OnInit, AfterViewInit {
 
   post: Post;
 
+  timerOver : boolean;
   countDown;
   days: number;
   hours: number;
@@ -40,9 +41,8 @@ export class PostDetailsComponent implements OnInit, AfterViewInit {
         const minutesLeft = Math.floor((hoursLeft) - (this.hours * 3600));
         this.minutes     = Math.floor(minutesLeft / 60);
         this.seconds = seconds % 60;
-        console.log();
+        if (this.count - 1 == 0) this.timerOver = true;
         return --this.count;
-
         }
       )
     );
@@ -56,7 +56,9 @@ export class PostDetailsComponent implements OnInit, AfterViewInit {
     private router: Router,
     private service: PostManagementService,
     private afs: AngularFirestore
-  ) {}
+  ) {
+    this.timerOver = false;
+  }
 
   ngOnInit() {
     let id: string;
