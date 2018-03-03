@@ -16,14 +16,22 @@ export class BiddingComponent implements OnInit {
   newBidEntry: number;
   bids: Bid[];
 
+
   @Input()
   parentPost: Post;
 
   @Input()
-  timerOver: boolean;
+  hidden: boolean;
+  @Input()
+showWinner: boolean;
+  @Input()
+  timeOver: boolean;
 
   constructor(private service: BidManagementService, private userService: UserManagementService,
-              private postService: PostManagementService) { }
+              private postService: PostManagementService) {
+    this.showWinner = false;
+    this.timeOver = false;
+  }
 
   ngOnInit() {
     this.newBidEntry = this.parentPost.currentBid + 1;

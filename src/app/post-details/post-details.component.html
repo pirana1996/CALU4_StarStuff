@@ -23,56 +23,56 @@
       </div>
       <h4>price offer {{winnerBid.price}}</h4>
     </div>
-<div>
-    <div id="countdown-timer" *ngIf="!timerOver" class="row card">
-      <h2 style="color: darkslategrey">COUNTDOWN</h2>
-      <div class="row">
-        <!--<div class="col-md-2"></div>-->
-        <div class="col-xs-offset-2 col-xs-2 col-md-offset-2 col-md-2 timer-part">
-          <div class="min"><span style="line-height: 60px;">{{days}}</span></div>
+    <div>
+      <div id="countdown-timer" *ngIf="canBid" class="row card">
+        <h2 style="color: darkslategrey">COUNTDOWN</h2>
+        <div class="row">
+          <!--<div class="col-md-2"></div>-->
+          <div class="col-xs-offset-2 col-xs-2 col-md-offset-2 col-md-2 timer-part">
+            <div class="min"><span style="line-height: 60px;">{{days}}</span></div>
+          </div>
+          <div class="col-xs-2 col-md-2 timer-part">
+            <div class="min"><span style="line-height: 60px;">{{hours}}</span></div>
+          </div>
+          <div class="col-xs-2  col-md-2 timer-part">
+            <div class="min"><span style="line-height: 60px;">{{minutes}}</span></div>
+          </div>
+          <div class="col-xs-2  col-md-2 timer-part">
+            <div class="min"><span style="line-height: 60px;">{{seconds}}</span></div>
+          </div>
         </div>
-        <div class="col-xs-2 col-md-2 timer-part">
-          <div class="min"><span style="line-height: 60px;">{{hours}}</span></div>
+
+        <div class="row">
+          <div class="col-xs-offset-2 col-xs-2 col-md-offset-2 col-md-2 timer-part">
+            <small style="font-weight: bold">days</small>
+          </div>
+          <div class="col-xs-2 col-md-2 timer-part">
+            <small style="font-weight: bold">hours</small>
+          </div>
+          <div class="col-xs-2 col-md-2 timer-part">
+            <small style="font-weight: bold">minutes</small>
+          </div>
+          <div class="col-xs-2 col-md-2 timer-part">
+            <small style="font-weight: bold">seconds</small>
+          </div>
         </div>
-        <div class="col-xs-2  col-md-2 timer-part">
-          <div class="min"><span style="line-height: 60px;">{{minutes}}</span></div>
-        </div>
-        <div class="col-xs-2  col-md-2 timer-part">
-          <div class="min"><span style="line-height: 60px;">{{seconds}}</span></div>
-        </div>
+
       </div>
 
-      <div class="row">
-        <div class="col-xs-offset-2 col-xs-2 col-md-offset-2 col-md-2 timer-part">
-          <small style="font-weight: bold">days</small>
-        </div>
-        <div class="col-xs-2 col-md-2 timer-part">
-          <small style="font-weight: bold">hours</small>
-        </div>
-        <div class="col-xs-2 col-md-2 timer-part">
-          <small style="font-weight: bold">minutes</small>
-        </div>
-        <div class="col-xs-2 col-md-2 timer-part">
-          <small style="font-weight: bold">seconds</small>
-        </div>
-      </div>
+      <span style="display: none">{{countDown|async}}</span>
+
+      <br>
+
+
+      <app-bidding *ngIf='post' [parentPost]="post" [hidden]="!canBid" [showWinner]="canBid"
+                   [timeOver]="timerOver"></app-bidding>
+
 
     </div>
 
-    <span style="display: none">{{countDown|async}}</span>
-
-    <br>
-
-
-    <app-bidding *ngIf='post' [parentPost]="post" [timerOver]="timerOver"></app-bidding>
-
-
 
   </div>
-
-
 </div>
-
 
 
 

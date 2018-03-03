@@ -1,6 +1,6 @@
 <div>
 
-  <div class="row card" *ngIf="!timerOver">
+  <div class="row card" *ngIf="!hidden">
     <h5 style="color: darkslategrey">Place your bid before the time is over</h5>
     <br>
     <div class="col-xs-12 col-sm-6">
@@ -16,6 +16,10 @@
     </div>
 
     <br><br>
+  </div>
+
+  <div class="row card" style="padding: 50px;" *ngIf="hidden && !showWinner && !timeOver">
+    <h2 style="color: darkslategrey">Waiting for winner...</h2>
   </div>
 
   <br>
