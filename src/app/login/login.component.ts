@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from "../auth/auth.service";
-import {Router} from "@angular/router";
-import {User} from "../model/User";
+import {AuthService} from '../auth/auth.service';
+import {Router} from '@angular/router';
+import {User} from '../model/User';
 
 @Component({
   selector: 'app-login',
@@ -9,10 +9,10 @@ import {User} from "../model/User";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  authenticated: Object;
   user: User;
 
-  constructor(private auth: AuthService,  private router: Router) {
+  constructor(public auth: AuthService,  private router: Router) {
     this.auth.user.subscribe(user => {
       this.user = user;
       if (user)

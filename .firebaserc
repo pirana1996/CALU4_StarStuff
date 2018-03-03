@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "test2-6c973"
+    "default": "test2-6c973",
+    "firebaseexample": "test2-6c973"
   }
 }
