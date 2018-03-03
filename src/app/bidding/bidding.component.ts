@@ -19,6 +19,9 @@ export class BiddingComponent implements OnInit {
   @Input()
   parentPost: Post;
 
+  @Input()
+  timerOver: boolean;
+
   constructor(private service: BidManagementService, private userService: UserManagementService,
               private postService: PostManagementService) { }
 

@@ -1,44 +1,69 @@
 <div>
 
-
-  <div class="row">
-
+  <div class="row card" *ngIf="!timerOver">
+    <h5 style="color: darkslategrey">Place your bid before the time is over</h5>
+    <br>
     <div class="col-xs-12 col-sm-6">
-      <div class="input-group">
-        <span class="input-group-addon">$</span>
+      <div id="bid-input" class="input-group">
+        <span style="background-color: #007AFF; font-weight: bold; color: white" class="input-group-addon">$</span>
         <input [(ngModel)]="newBidEntry" type="text" class="form-control">
-        <span class="input-group-addon">.00</span>
+        <span style="background-color: #007AFF; font-weight: bold; color: white" class="input-group-addon">.00</span>
       </div>
     </div>
 
     <div class="col-xs-12 col-sm-6">
-      <button (click)="bidEntry()" class="btn btn-primary btn-block">Bid</button>
+      <button id="bid-btn" (click)="bidEntry()" class="btn btn-block" style="background-color: #007AFF; font-weight: bold; color: white">Bid</button>
     </div>
 
+    <br><br>
   </div>
 
-  <br><br>
+  <br>
 
-  <div style="overflow-y: scroll; height:300px; width: 100%;">
-    <table class="table table-striped">
-      <thead>
-      <tr>
-        <th>User</th>
-        <th>Bid</th>
-      </tr>
-      </thead>
-      <tbody>
-
-      <tr *ngFor="let bid of bids">
-        <td><img src="{{bid.photoURL}}" class="img-circle img-responsive"
-                 style="width: 20px; height: 20px; display: inline; float:left;"/>
-          <a>{{ bid.displayName }}</a>
-        </td>
-        <td>{{ bid.price }}$</td>
-      </tr>
-      </tbody>
-    </table>
+  <div class="row card">
+    <h3 style="color: darkslategrey">Biddings</h3>
+    <div style="overflow-y: scroll; height:300px; width: 100%;">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th colspan="2" class="col-md-8">User</th>
+          <th class="col-md-3">Bid</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let bid of bids">
+          <td class="col-md-1">
+            <img src="{{bid.photoURL}}" class="img-circle"
+                 style="width: 40px; height: 40px;"/>
+          </td>
+          <td class="col-md-8" style="vertical-align: middle;">
+            <a>{{ bid.displayName }}</a>
+          </td>
+          <td class="col-md-3" align="left" style="vertical-align: middle">${{ bid.price }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+
+  <!--<table class="table table-striped">-->
+    <!--<thead>-->
+    <!--<tr>-->
+      <!--<th>User</th>-->
+      <!--<th>Bid</th>-->
+    <!--</tr>-->
+    <!--</thead>-->
+    <!--<tbody>-->
+
+    <!--<tr *ngFor="let bid of bids">-->
+      <!--<td><img src="{{bid.photoURL}}" class="img-circle img-responsive"-->
+               <!--style="width: 20px; height: 20px; display: inline; float:left;"/>-->
+        <!--<a>{{ bid.displayName }}</a>-->
+      <!--</td>-->
+      <!--<td>{{ bid.price }}$</td>-->
+    <!--</tr>-->
+    <!--</tbody>-->
+  <!--</table>-->
 
   <!--
     <h2>Contextual Classes</h2>

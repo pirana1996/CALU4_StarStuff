@@ -2,7 +2,7 @@ export class Post {
   id?: string;
   startPrice: number;
   currentBid: number;
-  user: number;
+  user: string;
   title: string;
   description : string;
   imageUrl: string;

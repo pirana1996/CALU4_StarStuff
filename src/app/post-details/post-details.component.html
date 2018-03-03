@@ -1,6 +1,7 @@
 <div class="row">
 
-  <div *ngIf="post" class="col-md-8">
+
+  <div *ngIf="post" class="col-md-7 card">
     <h2>{{ post.title }}</h2>
     <br>
     <img src={{post.imageUrl}} width="300px">
@@ -10,13 +11,24 @@
   </div>
 
 
-  <div class="col-md-4">
+  <div class="col-md-offset-1 col-md-4">
 
-    <div id="countdown-timer" *ngIf="!timerOver">
-
+    <div class="row card" *ngIf="timerOver">
+      <h2>Winner is</h2>
+      <div>
+        <img class="img-circle img-responsive" src={{winnerBid.photoURL}} width="80px" height="50px"
+             style="margin: 0 auto">
+        <br>
+        <span style="font-size: 3em">{{winnerBid.displayName}}</span>
+      </div>
+      <h4>price offer {{winnerBid.price}}</h4>
+    </div>
+<div>
+    <div id="countdown-timer" *ngIf="!timerOver" class="row card">
+      <h2 style="color: darkslategrey">COUNTDOWN</h2>
       <div class="row">
         <!--<div class="col-md-2"></div>-->
-        <div class="col-xs-2 col-md-offset-2 col-md-2 timer-part">
+        <div class="col-xs-offset-2 col-xs-2 col-md-offset-2 col-md-2 timer-part">
           <div class="min"><span style="line-height: 60px;">{{days}}</span></div>
         </div>
         <div class="col-xs-2 col-md-2 timer-part">
@@ -32,16 +44,16 @@
 
       <div class="row">
         <div class="col-xs-offset-2 col-xs-2 col-md-offset-2 col-md-2 timer-part">
-          <div class="text-center">days</div>
+          <small style="font-weight: bold">days</small>
         </div>
         <div class="col-xs-2 col-md-2 timer-part">
-          <div>hours</div>
+          <small style="font-weight: bold">hours</small>
         </div>
         <div class="col-xs-2 col-md-2 timer-part">
-          <div>minutes</div>
+          <small style="font-weight: bold">minutes</small>
         </div>
         <div class="col-xs-2 col-md-2 timer-part">
-          <div>seconds</div>
+          <small style="font-weight: bold">seconds</small>
         </div>
       </div>
 
@@ -49,11 +61,11 @@
 
     <span style="display: none">{{countDown|async}}</span>
 
-    <br><br>
+    <br>
 
-    <div class="row">
-    <app-bidding *ngIf='post' [parentPost]="post"></app-bidding>
-    </div>
+
+    <app-bidding *ngIf='post' [parentPost]="post" [timerOver]="timerOver"></app-bidding>
+
 
 
   </div>

@@ -11,6 +11,8 @@ import {map, take} from 'rxjs/operators';
 import {timer} from 'rxjs/observable/timer';
 import * as firebase from 'firebase/firestore';
 import {toNumber} from "ngx-bootstrap/timepicker/timepicker.utils";
+import {BidManagementService} from "../services/bid-management.service";
+import {Bid} from "../model/Bid";
 
 
 @Component({
@@ -21,6 +23,7 @@ import {toNumber} from "ngx-bootstrap/timepicker/timepicker.utils";
 export class PostDetailsComponent implements OnInit, AfterViewInit {
 
   post: Post;
+  winnerBid: Bid;
 
   timerOver : boolean;
   countDown;
@@ -41,11 +44,21 @@ export class PostDetailsComponent implements OnInit, AfterViewInit {
         const minutesLeft = Math.floor((hoursLeft) - (this.hours * 3600));
         this.minutes     = Math.floor(minutesLeft / 60);
         this.seconds = seconds % 60;
-        if (this.count - 1 == 0) this.timerOver = true;
+        if (this.count - 1 == 0) this.showWinner();
         return --this.count;
         }
       )
     );
+
+  }
+
+  showWinner() {
+    this.bidService.getWinnerBidByPostIdAsObservable(this.post.id)
+      .subscribe(bids => {
+        console.log(bids);
+        this.winnerBid = bids[0];
+        this.timerOver = true;
+      });
 
   }
 
@@ -55,6 +68,7 @@ export class PostDetailsComponent implements OnInit, AfterViewInit {
     private route: ActivatedRoute,
     private router: Router,
     private service: PostManagementService,
+    private bidService: BidManagementService,
     private afs: AngularFirestore
   ) {
     this.timerOver = false;

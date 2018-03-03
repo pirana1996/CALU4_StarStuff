@@ -35,6 +35,11 @@ export class BidManagementService {
     });
   }
 
+  getWinnerBidByPostIdAsObservable(id: string): Observable<Bid[]> {
+    return this.afs.collection("Bid", ref => ref.where('id_post', '==', String(id))
+      .orderBy("price",'desc').limit(1)).valueChanges();
+  }
+
   public addBidEntry(bid: Bid): void {
     this.bidsCollection.add({email: bid.email, price: bid.price, id_post: bid.id_post,
       id_user: bid.id_user, photoURL: bid.photoURL, displayName: bid.displayName});

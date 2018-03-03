@@ -4,7 +4,7 @@
       <h3>Posts</h3>
     </div>
     <div class="col-xs-offset-8 col-xs-2">
-      <h3 (click)="changeDisplayFormat()" *ngIf="!postType" class="format-icon"><i class="fa fa-bars"></i></h3>
+      <h3 id="btn-bars" (click)="changeDisplayFormat()" *ngIf="!postType" class="format-icon"><i class="fa fa-bars"></i></h3>
       <h3 (click)="changeDisplayFormat()" *ngIf="postType" class="format-icon"><i class="fa fa-th"></i></h3>
     </div>
   </div>
@@ -13,7 +13,7 @@
 
 <!--If card view is chosen-->
 <div *ngIf="postType" class="container">
-  <div *ngFor="let post of posts" class="col-md-3 col-sm-12 cursor-change">
+  <div *ngFor="let post of posts" class="col-md-3 col-sm-12 cursor-change grid-item">
     <div class="col-item" [routerLink]="['/post/details', post.id]">
       <div class="photo">
         <img src="{{post.imageUrl}}" class="img-responsive post-img"/>
