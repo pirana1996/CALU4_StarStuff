@@ -15,15 +15,15 @@ import {PostManagementService} from '../services/post-management.service';
 export class BiddingComponent implements OnInit {
   newBidEntry: number;
   bids: Bid[];
+  showBiddingInput: boolean;
 
 
   @Input()
   parentPost: Post;
-
   @Input()
   hidden: boolean;
   @Input()
-showWinner: boolean;
+  showWinner: boolean;
   @Input()
   timeOver: boolean;
 
@@ -31,6 +31,7 @@ showWinner: boolean;
               private postService: PostManagementService) {
     this.showWinner = false;
     this.timeOver = false;
+    this.showBiddingInput = false;
   }
 
   ngOnInit() {
@@ -41,6 +42,8 @@ showWinner: boolean;
         // console.log(this.bids[0].photoURL);
         if (this.bids.length > 0) { this.newBidEntry = this.bids[0].price + 1; }
       });
+    if (this.parentPost.endDateTime.getTime() < new Date().getTime())
+      this.showBiddingInput = true;
   }
 
   bidEntry() {
