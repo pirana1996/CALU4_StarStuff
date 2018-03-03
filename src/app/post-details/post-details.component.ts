@@ -25,6 +25,7 @@ export class PostDetailsComponent implements OnInit, AfterViewInit {
   post: Post;
   winnerBid: Bid;
   canBid = true;
+  showEmptyTimer: boolean;
 
   timerOver : boolean;
   countDown;
@@ -89,6 +90,7 @@ export class PostDetailsComponent implements OnInit, AfterViewInit {
         console.log(post);
         this.post = post;
         this.post.id = id;
+        if (this.post.endDateTime.getTime() < new Date().getTime()) this.showEmptyTimer = true;
         this.count = Math.round(this.post.endDateTime.getTime() / 1000 - new Date().getTime() / 1000);
         // this.minutes = this.count / 60;
         // console.log(this.post.endDateTime - new Date());

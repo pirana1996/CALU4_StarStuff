@@ -1,3 +1,4 @@
+
 <div class="container text-left">
   <div class="row">
     <div class="col-xs-2">
@@ -16,7 +17,7 @@
   <div *ngFor="let post of posts" class="col-md-3 col-sm-12 cursor-change grid-item">
     <div class="col-item" [routerLink]="['/post/details', post.id]">
       <div class="photo">
-        <img src="{{post.imageUrl}}" class="img-responsive post-img"/>
+        <img src="{{post.imageUrl}}" class="post-img" width="100%"/>
       </div>
       <div class="info">
         <div class="row text-center">
@@ -26,7 +27,7 @@
             <!--TODO: Fix incompatible sizes issue-->
 
             <h5>{{ (post.title.length > 25) ? (post.title | slice : 0 : 25) + '..' :(post.title) }}</h5>
-            <h5 class="price-text-color">{{post.currentBid | currency: 'USD': 'symbol'}}</h5>
+            <h5 class="price-text-color">{{post.currentBid | currency: 'MKD': 'symbol'}}</h5>
           </div>
         </div>
         <div class="separator clear-left">
@@ -53,11 +54,11 @@
       [routerLink]="['/post/details', post.id]">
     <div class="row">
       <div class="col-md-2">
-        <img src={{post.imageUrl}} width="100px" height="100">
+        <img src={{post.imageUrl}} width="100px" height="100px">
       </div>
       <div class="col-md-8">
         <h3>{{ (post.title.length > 60) ? (post.title | slice : 0 : 60) + '..' :(post.title) }}</h3>
-        <h5 class="price-text-color">{{post.currentBid | currency: 'USD': 'symbol'}}</h5>
+        <h5 class="price-text-color">{{post.currentBid | currency: 'MKD': 'symbol'}}</h5>
       </div>
       <div class="col-md-2 text-center">
         <p class="btn-details" style="margin-top: 28%">

@@ -1,11 +1,9 @@
 <div class="container">
 
   <div class="col-md-6 col-md-offset-3 col-xs-12">
-    <form [formGroup]="postForm" novalidate class="form-custom">
-
-      <div class="row">
-        <button class="btn btn-link" (click)="back()"><span class="fa fa-chevron-left"></span> Back</button>
-      </div>
+    <form [formGroup]="postForm" novalidate class="form-custom card" style="padding: 30px">
+      <button class="btn btn-link" (click)="back()"><span class="fa fa-chevron-left"></span> Back</button>
+      <h3>Create new post</h3>
 
       <br>
 
@@ -30,7 +28,7 @@
 
       <div class="form-group">
         <label class="center-block">Description:
-          <textarea class="form-control" formControlName="description" cols="5">
+          <textarea class="form-control" formControlName="description" cols="15">
       </textarea>
         </label>
       </div>
@@ -48,11 +46,11 @@
         <!--</div>-->
       </div>
 
-      <div class="form-group">
-        <label class="center-block">Photo URL:
-          <input class="form-control" formControlName="imageUrl">
-        </label>
-      </div>
+      <!--<div class="form-group">-->
+        <!--<label class="center-block">Photo URL:-->
+          <!--<input class="form-control" formControlName="imageUrl">-->
+        <!--</label>-->
+      <!--</div>-->
 
       <!--Photo link validation-->
       <div *ngIf="postForm.controls['imageUrl'].invalid && (postForm.controls['imageUrl'].dirty ||
@@ -132,6 +130,10 @@
         <button type="reset" (click)="revertForm()"
                 class="col-md-4 col-md-offset-2 btn btn-danger">Clean
         </button>
+      </div>
+      <br><br>
+      <div *ngIf="!showAddForbiddenMsg">
+        <span class="bg-danger" style="padding: 20px; border-radius: 5px">Sorry, You are not permitted to add new post at this moment</span>
       </div>
 
     </form>

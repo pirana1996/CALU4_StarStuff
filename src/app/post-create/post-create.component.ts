@@ -20,6 +20,7 @@ export class PostCreateComponent implements OnInit {
   canAdd: boolean; // whether the post can be added
   postForm: FormGroup;
   activeUser: User;
+  showAddForbiddenMsg: boolean;
 
   ngOnInit(): void {
     this.createForm();
@@ -31,7 +32,7 @@ export class PostCreateComponent implements OnInit {
               private userService: UserManagementService,
               private router: Router,
               private location: Location) {
-    this.canAdd = true;
+    this.showAddForbiddenMsg = true;
   }
 
   createForm() {
@@ -70,17 +71,18 @@ export class PostCreateComponent implements OnInit {
   onSave() {
     // console.log(JSON.stringify(s));
     // we must subscribe because addPost() sends post method which is idempotent
-    if(this.activeUser != null){
-      const post: Post = this.prepareSaveStudent();
-      this.service.addPost(post)
-        .subscribe(() => {
-          this.router.navigateByUrl('/posts/list');
-        });
-    }
-    else {
-      console.log("vlaga vo else");
-      this.router.navigateByUrl('/login');
-    }
+    // if(this.activeUser != null){
+    //   const post: Post = this.prepareSaveStudent();
+    //   this.service.addPost(post)
+    //     .subscribe(() => {
+    //       this.router.navigateByUrl('/posts/list');
+    //     });
+    // }
+    // else {
+    //   console.log("vlaga vo else");
+    //   this.router.navigateByUrl('/login');
+    // }
+    this.showAddForbiddenMsg = false;
   }
 
   revertForm() {

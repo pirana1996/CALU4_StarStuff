@@ -1,11 +1,11 @@
 <div>
 
-  <div class="row card" *ngIf="!hidden">
+  <div class="row card" *ngIf="!hidden && !showBiddingInput">
     <h5 style="color: darkslategrey">Place your bid before the time is over</h5>
     <br>
     <div class="col-xs-12 col-sm-6">
       <div id="bid-input" class="input-group">
-        <span style="background-color: #007AFF; font-weight: bold; color: white" class="input-group-addon">$</span>
+        <span style="background-color: #007AFF; font-weight: bold; color: white" class="input-group-addon">MKD</span>
         <input [(ngModel)]="newBidEntry" type="text" class="form-control">
         <span style="background-color: #007AFF; font-weight: bold; color: white" class="input-group-addon">.00</span>
       </div>
@@ -43,7 +43,7 @@
           <td class="col-md-8" style="vertical-align: middle;">
             <a>{{ bid.displayName }}</a>
           </td>
-          <td class="col-md-3" align="left" style="vertical-align: middle">${{ bid.price }}</td>
+          <td class="col-md-3" align="left" style="vertical-align: middle">{{ bid.price }} MKD</td>
         </tr>
         </tbody>
       </table>
