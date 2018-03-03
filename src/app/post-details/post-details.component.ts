@@ -26,7 +26,7 @@ export class PostDetailsComponent implements OnInit, AfterViewInit {
   winnerBid: Bid;
   canBid = true;
 
-  timerOver : boolean;
+  timerOver: boolean;
   countDown;
   days: number;
   hours: number;

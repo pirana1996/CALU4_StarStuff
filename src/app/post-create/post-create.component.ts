@@ -64,7 +64,7 @@ export class PostCreateComponent implements OnInit {
     const imageUrl: string = formModel.imageUrl as string;
     const startDate: Date = new Date();//formModel.startDate as Date;
     const endDateTime: Date = new Date();// formModel.endDateTime as Date;
-    return new Post(startPrice, currentBid, user, title, description, imageUrl, startDate, endDateTime);
+    return new Post(startPrice, currentBid, user, title, description, imageUrl, startDate, endDateTime, '');
   }
 
   onSave() {

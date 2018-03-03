@@ -4,12 +4,15 @@ export class Post {
   currentBid: number;
   user: string;
   title: string;
-  description : string;
+  description: string;
   imageUrl: string;
+  imageUrl1: string;
+  imageUrl2: string;
   startDate: Date;
   endDateTime: Date;
+  goal: string;
 
-  constructor (startPrice, currentBid, user, title, description, imageUrl, startDate, endDateTime) {
+  constructor (startPrice, currentBid, user, title, description, imageUrl, startDate, endDateTime, goal) {
     this.startPrice = startPrice;
     this.currentBid = currentBid;
     this.user = user;
@@ -18,6 +21,7 @@ export class Post {
     this.imageUrl = imageUrl;
     this.startDate = startDate;
     this.endDateTime = endDateTime;
+    this.goal = goal;
   }
 }
 

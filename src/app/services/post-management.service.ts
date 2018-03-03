@@ -49,7 +49,7 @@ export class PostManagementService {
 
   public updatePost(post: Post) {
     this.postsCollectionRef.doc(String(post.id)).set({ currentBid: post.currentBid, description: post.description,
-      imageUrl: post.imageUrl, startPrice: post.startPrice, startDate: post.startDate,
+      imageUrl: post.imageUrl, imageUrl1: post.imageUrl1, imageUrl2: post.imageUrl2, startPrice: post.startPrice, startDate: post.startDate,
       title: post.title, user: post.user, endDateTime: post.endDateTime});
   }
 
@@ -60,8 +60,9 @@ export class PostManagementService {
 
   public addPost(post: Post) {
       const a = this.postsCollectionRef.add({ currentBid: post.currentBid, description: post.description,
-      imageUrl: post.imageUrl, startPrice: post.startPrice, title: post.title, user: post.user,
-        startDate: post.startDate, endDateTime: post.endDateTime});
+        imageUrl: post.imageUrl, imageUrl1: post.imageUrl1, imageUrl2: post.imageUrl2,
+        startPrice: post.startPrice, title: post.title, user: post.user,
+        startDate: post.startDate, endDateTime: post.endDateTime, goal: post.goal});
       return Observable.fromPromise(a);
   }
 }
