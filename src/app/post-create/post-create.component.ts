@@ -23,7 +23,7 @@ export class PostCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
-    this.userService.getActiveUser().subscribe(user => {this.activeUser = user; console.log(user.uid)});
+    this.userService.getActiveUser().subscribe(user => this.activeUser = user);
   }
 
   constructor(private fb: FormBuilder,
@@ -68,13 +68,19 @@ export class PostCreateComponent implements OnInit {
   }
 
   onSave() {
-    const post: Post = this.prepareSaveStudent();
     // console.log(JSON.stringify(s));
     // we must subscribe because addPost() sends post method which is idempotent
-    this.service.addPost(post)
-      .subscribe(() => {
-        this.router.navigateByUrl('/posts/list');
-      });
+    if(this.activeUser != null){
+      const post: Post = this.prepareSaveStudent();
+      this.service.addPost(post)
+        .subscribe(() => {
+          this.router.navigateByUrl('/posts/list');
+        });
+    }
+    else {
+      console.log("vlaga vo else");
+      this.router.navigateByUrl('/login');
+    }
   }
 
   revertForm() {
