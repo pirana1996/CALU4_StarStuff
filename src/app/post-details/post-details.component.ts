@@ -24,6 +24,7 @@ export class PostDetailsComponent implements OnInit, AfterViewInit {
 
   post: Post;
   winnerBid: Bid;
+  canBid = true;
 
   timerOver : boolean;
   countDown;
@@ -44,7 +45,9 @@ export class PostDetailsComponent implements OnInit, AfterViewInit {
         const minutesLeft = Math.floor((hoursLeft) - (this.hours * 3600));
         this.minutes     = Math.floor(minutesLeft / 60);
         this.seconds = seconds % 60;
-        if (this.count - 1 == 0) this.showWinner();
+        if (this.count - 1 == 0) {this.canBid = false;}
+        else if (this.count - 1 == -10) {this.showWinner();}
+
         return --this.count;
         }
       )
@@ -58,6 +61,7 @@ export class PostDetailsComponent implements OnInit, AfterViewInit {
         console.log(bids);
         this.winnerBid = bids[0];
         this.timerOver = true;
+        // this.timerOver = true;
       });
 
   }
